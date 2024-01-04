@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>冯兄化吉の时光屋</title>
+        <title>单调栈 | 冯兄化吉の时光屋</title>
         <meta name="author" content="Zijian Feng" />
         <meta name="description" content="欢迎来到冯兄化吉的精神时光屋" />
         <meta name="keywords" content="" />
@@ -32,7 +32,9 @@
 
 
 
-<script src="/js/lib/home.js"></script>
+
+
+
 
 <link rel="stylesheet" href="/css/main.css" />
 
@@ -143,84 +145,11 @@
 
             <transition name="into">
                 <div id="main" v-show="!loading">
-                    <div id="home-head">
-    <div id="home-background" ref="homeBackground" data-images="/images/background.jpg"></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>冯兄化吉の时光屋</h1>
-                <h3></h3>
-                <h5>欢迎来到冯兄化吉的精神时光屋</h5>
-            </div>
-        </span>
+                    <div class="article">
+    <div>
+        <h1>单调栈</h1>
     </div>
-</div>
-<div id="home-posts-wrap"  ref="homePostsWrap">
-    <div id="home-posts">
-        
-
-<div class="post">
-    <a href="/2024/01/04/RPC/">
-        <h2 class="post-title">RPC</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/Project/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Project
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/1/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="RPC项目"><a href="#RPC项目" class="headerlink" title="RPC项目"></a>RPC项目</h1><p>记录在做RPC项目中的一些问题和自己的思考。</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/Java/" style="color: #ff7d73">Java</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/RPC/" style="color: #00a596">RPC</a>
-        </span>
-        
-    </div>
-    <a href="/2024/01/04/RPC/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/10/%E5%8D%95%E8%B0%83%E6%A0%88/">
-        <h2 class="post-title">单调栈</h2>
-    </a>
-    <div class="category-and-date">
-        
+    <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
@@ -230,10 +159,9 @@
         
         
     </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="前后缀分解练习"><a href="#前后缀分解练习" class="headerlink" title="前后缀分解练习"></a>前后缀分解练习</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-all-good-indices/">2420. 找到所有好下标</a></p>
+    
+    <div class="content" v-pre>
+        <h2 id="前后缀分解练习"><a href="#前后缀分解练习" class="headerlink" title="前后缀分解练习"></a>前后缀分解练习</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-all-good-indices/">2420. 找到所有好下标</a></p>
 <ul>
 <li>用单调栈记录当前位置之前的非递增&#x2F;递减的元素个数</li>
 <li>遍历找出符合题意的位置</li>
@@ -432,310 +360,13 @@
 &#125;
 </code></pre>
 
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/11/10/%E5%8D%95%E8%B0%83%E6%A0%88/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/09/%E6%A0%91%E5%BD%A2dp/">
-        <h2 class="post-title">树形dp</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E7%AE%97%E6%B3%95/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                算法
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/9
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="树形dp"><a href="#树形dp" class="headerlink" title="树形dp"></a>树形dp</h1><h2 id="换根dp"><a href="#换根dp" class="headerlink" title="换根dp"></a>换根dp</h2><p>树形 DP 中的换根 DP 问题又被称为二次扫描，通常不会指定根结点，并且根结点的变化会对一些值，例如子结点深度和、点权和等产生影响。</p>
-<p>通常需要两次 DFS，第一次 DFS 预处理诸如深度，点权和之类的信息，在第二次 DFS 开始运行换根动态规划。</p>
-<h3 id="834-树中距离之和"><a href="#834-树中距离之和" class="headerlink" title="834. 树中距离之和"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sum-of-distances-in-tree/">834. 树中距离之和</a></h3><pre><code class="java">class Solution &#123;
-    int[] res;
-    int[] size;
-    public void dfs(int cur,int fa,List&lt;Integer&gt;[] g,int depth)&#123;
-        res[0] += depth;
-        size[cur] = 1;
-        for(int ch:g[cur])&#123;
-            if(ch == fa)
-                continue;
-            dfs(ch,cur,g,depth+1);
-            size[cur] += size[ch];
-        &#125;
-
-    &#125;
-    public void dfs2(int cur, int fa,List&lt;Integer&gt;[] g)&#123;
-        for(int ch:g[cur])&#123;
-            if(ch != fa)&#123;
-                res[ch] = res[cur]-2*size[ch]+g.length;
-                dfs2(ch,cur,g);
-            &#125;
-        &#125;
-    &#125;
-    public int[] sumOfDistancesInTree(int n, int[][] edges) &#123;
-        res = new int[n];
-        size = new int[n];
-        List&lt;Integer&gt;[] g = new ArrayList[n];
-        Arrays.setAll(g,e-&gt;new ArrayList&lt;&gt;());
-        for(int[] edge:edges)&#123;
-            g[edge[0]].add(edge[1]);
-            g[edge[1]].add(edge[0]);
-        &#125;
-        dfs(0,-1,g,0);
-        dfs2(0,-1,g);
-        return res;
-    &#125;
-&#125;
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #ff7d73">算法</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E6%A0%91%E5%BD%A2dp/" style="color: #00bcd4">树形dp</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/09/%E6%A0%91%E5%BD%A2dp/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/07/%E5%8F%8C%E6%8C%87%E9%92%88/">
-        <h2 class="post-title">双指针</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E7%AE%97%E6%B3%95/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                算法
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/7
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><ul>
-<li>定长滑动窗口</li>
-<li>不定长滑动窗口（求最长&#x2F;最大）</li>
-<li>不定长滑动窗口（求最短&#x2F;最小）</li>
-<li>不定长滑动窗口（求子数组个数）</li>
-<li>多指针滑动窗口</li>
-</ul>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="color: #ffa2c4">双指针</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #00bcd4">算法</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/07/%E5%8F%8C%E6%8C%87%E9%92%88/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/05/14/%E5%AE%9E%E4%B9%A0%E6%97%A5%E8%AE%B0/">
-        <h2 class="post-title">实习日记</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/Internship/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Internship
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/5/14
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="实习日记"><a href="#实习日记" class="headerlink" title="实习日记"></a>实习日记</h1><p>在昆羽科技公司的实习笔记</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/Internship/" style="color: #00bcd4">Internship</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/Java/" style="color: #00bcd4">Java</a>
-        </span>
-        
-    </div>
-    <a href="/2023/05/14/%E5%AE%9E%E4%B9%A0%E6%97%A5%E8%AE%B0/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/05/14/hello-world/">
-        <h2 class="post-title">搭建教程</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/5/14
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<p>搭建博客的简单指令</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="color: #03a9f4">博客</a>
-        </span>
-        
-    </div>
-    <a href="/2023/05/14/hello-world/" class="go-post">阅读全文</a>
-</div>
-
-
-        <div class="page-current">
-    <div class="prev">
-        
-    </div>
-    <div class="page-index">
-        
-        <span class="current">1</span>
-        
-    </div>
-    <div class="next">
-        
-    </div>
-</div>
-
     </div>
     
-    <div id="home-card">
-        <div id="card-div">
-    <div class="card-style">
-        <div class="avatar">
-            <img src="/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">Zijian Feng</div>
-        <div class="description">
-            <p>Northeastern University<br>Backend Engineer</p>
-
-        </div>
-        
-        <div class="icon-links">
-            
-            <span class="icon-link">
-                <a target="_blank" rel="noopener" href="https://github.com/Fxhj0501">
-                    <i
-                        class="fa-brands fa-github fa-fw"
-                    ></i>
-                </a>
-            </span>
-            
-            <span class="icon-link">
-                <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/zijian-feng-49389a262/">
-                    <i
-                        class="fa-brands fa-linkedin fa-fw"
-                    ></i>
-                </a>
-            </span>
-            
-        </div>
-        
-        
-    </div>
-</div>
-
-    </div>
+    
+    
+    
+    
+    
     
 </div>
 
@@ -768,6 +399,12 @@
             
         </div>
         <script src="/js/main.js"></script>
+        
+        
+
+
+
+
         
     </body>
 </html>
