@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Categories: 算法 | 冯兄化吉の时光屋</title>
+        <title>springcloud alibaba 实战 | 冯兄化吉の时光屋</title>
         <meta name="author" content="Zijian Feng" />
         <meta name="description" content="欢迎来到冯兄化吉的精神时光屋" />
         <meta name="keywords" content="" />
@@ -27,6 +27,10 @@
 
 
 <script src="/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -141,37 +145,20 @@
 
             <transition name="into">
                 <div id="main" v-show="!loading">
-                    <div id="archives">
-    
-    <div class="categories-tags">
-        
-        
-        <span>
-            <a href="/categories/Internship/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Internship
-            </a>
+                    <div class="article">
+    <div>
+        <h1>springcloud alibaba 实战</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/1/7
         </span>
         
-        
-        
-        <span>
-            <a href="/categories/%E7%AE%97%E6%B3%95/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                算法
-            </a>
-        </span>
-        
-        
-        
-        
-        
-        <span>
-            <a href="/categories/Project/" style="background: #00bcd4">
+        <span class="category">
+            <a href="/categories/Project/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -180,87 +167,106 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Java/" style="color: #00bcd4">Java</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/MicroService/" style="color: #00a596">MicroService</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/SpringBoot/" style="color: #ff7d73">SpringBoot</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/SpringCloud/" style="color: #ffa2c4">SpringCloud</a>
+            </span>
+            
+        </span>
+        
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/11/9</div>
-            <a href="/2023/11/09/%E6%A0%91%E5%BD%A2dp/">
-                <h3>树形dp</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/%E7%AE%97%E6%B3%95/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        算法
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #03a9f4">算法</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/%E6%A0%91%E5%BD%A2dp/" style="color: #ff7d73">树形dp</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
+    <div class="content" v-pre>
+        <h1 id="SpringCloud-Alibaba-实战"><a href="#SpringCloud-Alibaba-实战" class="headerlink" title="SpringCloud Alibaba 实战"></a>SpringCloud Alibaba 实战</h1><p>记录在做微服务项目中的一些问题和自己的思考。</p>
+<span id="more"></span>
+
+<h2 id="服务治理"><a href="#服务治理" class="headerlink" title="服务治理"></a>服务治理</h2><h3 id="负载均衡的实现"><a href="#负载均衡的实现" class="headerlink" title="负载均衡的实现"></a>负载均衡的实现</h3><ul>
+<li>在本项目中，我们使用<code>Fegin</code>实现负载均衡。</li>
+<li>在<code>Fegin</code>中，负载均衡是通过集成<code>Ribbon</code>实现的。<code>Ribbon</code>在发起请求前，会从“服务中心” 获取服务列表（清单），然后按照一定的负载均衡策略去发起请求，从而实现客户端的负载均衡。<code>Ribbon</code>本身也维护着服务提供者清单的有效性。如果它发现服务提供者不可用，则会重新从“服务中心“拉起新的服务提供者清单。</li>
+<li>在配置负载均策略时，可以在<code>yaml</code>配置文件中修改，也可以使用如下方式修改。</li>
+</ul>
+<pre><code class="java">@Configuration
+public class LoadBalanceConfig &#123;
+
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate()&#123;
+        return new RestTemplate();
+    &#125;
+    // 配置负载均衡策略
+    @Bean
+    public IRule iRule()&#123;
+        return new RandomRule();
+    &#125;
+&#125;
+</code></pre>
+<p>这个配置指定了负载均衡策略为随机（<code>RandomRule</code>），适用于所有使用<code>@LoadBalanced</code>注解的<code>RestTemplate</code>。</p>
+<h3 id="负载均衡策略具体内容"><a href="#负载均衡策略具体内容" class="headerlink" title="负载均衡策略具体内容"></a>负载均衡策略具体内容</h3><p>Netflix Ribbon提供了多种负载均衡策略，每种策略根据不同的算法和准则选择服务实例。以下是Ribbon中常用的一些负载均衡策略及其作用：</p>
+<ol>
+<li><p><strong>RoundRobinRule</strong>：</p>
+<ul>
+<li>轮询策略。按顺序逐个选择每个服务实例。当列表结束时，循环重新开始。</li>
+</ul>
+</li>
+<li><p><strong>RandomRule</strong>：</p>
+<ul>
+<li>随机策略。随机选择服务实例。</li>
+</ul>
+</li>
+<li><p><strong>RetryRule</strong>：</p>
+<ul>
+<li>重试策略。正常时按照轮训选择服务，若过程中服务出现故障，在轮训一定次数后仍然故障，则会跳过故障的服务继续轮询。</li>
+</ul>
+</li>
+<li><p><strong>BestAvailableRule</strong>：</p>
+<ul>
+<li>最少并发请求策略。先过滤掉由于多次访问故障而处于断路器跳闸状态的服务，选择并发请求最少的服务实例。</li>
+</ul>
+</li>
+<li><p><strong>WeightedResponseTimeRule</strong>：</p>
+<ul>
+<li>加权响应时间策略。根据服务实例的平均响应时间进行加权，响应时间越快的实例被选中的概率越高。如果统计信息不足时，默认按照轮询进行。</li>
+</ul>
+</li>
+<li><p><strong>AvailabilityFilteringRule</strong>：</p>
+<ul>
+<li>可用过滤策略。过滤掉那些因为多次访问故障而处于断路器跳闸状态的服务，以及并发的连接数量超过阈值的服务，然后对剩余的服务列表使用轮询策略。</li>
+</ul>
+</li>
+<li><p><strong>ZoneAvoidanceRule</strong>：</p>
+<ul>
+<li>区域权衡策略。复合判断服务所在区域的性能和服务的可用性选择服务器。</li>
+</ul>
+</li>
+</ol>
+
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/11/7</div>
-            <a href="/2023/11/07/%E5%8F%8C%E6%8C%87%E9%92%88/">
-                <h3>双指针</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/%E7%AE%97%E6%B3%95/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        算法
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="color: #ff7d73">双指针</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #ffa2c4">算法</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
+    
+    
+    
+    
+    
     
 </div>
 
@@ -293,6 +299,12 @@
             
         </div>
         <script src="/js/main.js"></script>
+        
+        
+
+
+
+
         
     </body>
 </html>
