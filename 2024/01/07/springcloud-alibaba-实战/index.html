@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Zijian Feng" />
+  <!-- Open Graph Description 简短摘要-->
+  
+  <!-- 用于搜索引擎的文章摘要 -->
+  
+  <meta name="description" content="欢迎来到冯兄化吉的精神时光屋" />
+  
+  
+  
+  <title>
+    
+      springcloud alibaba 实战 
+      
+      
+      |
+    
+     冯兄化吉の时光屋
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Oranges</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">Friends</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">springcloud alibaba 实战</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2024-01-10 15:08:22
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Java/" title="Java">
+                    #Java
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/MicroService/" title="MicroService">
+                    #MicroService
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/SpringBoot/" title="SpringBoot">
+                    #SpringBoot
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/SpringCloud/" title="SpringCloud">
+                    #SpringCloud
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="SpringCloud-Alibaba-实战"><a href="#SpringCloud-Alibaba-实战" class="headerlink" title="SpringCloud Alibaba 实战"></a>SpringCloud Alibaba 实战</h1><p>记录在做微服务项目中的一些问题和自己的思考。</p>
+<span id="more"></span>
+
+
+
+<p>[toc]</p>
+<h2 id="服务启动参数"><a href="#服务启动参数" class="headerlink" title="服务启动参数"></a>服务启动参数</h2><ul>
+<li>Nacos</li>
+</ul>
+<pre><code class="shell">startup.cmd -m standalone
+</code></pre>
+<ul>
+<li>Sentienl</li>
+</ul>
+<pre><code class="shell">java -Dserver.port=8888 -Dcsp.sentinel.dashboard.server=localhost:8888 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard-1.8.4.jar
+</code></pre>
+<h2 id="服务治理"><a href="#服务治理" class="headerlink" title="服务治理"></a>服务治理</h2><h3 id="负载均衡的实现"><a href="#负载均衡的实现" class="headerlink" title="负载均衡的实现"></a>负载均衡的实现</h3><ul>
+<li>在本项目中，我们使用<code>Fegin</code>实现负载均衡。</li>
+<li>在<code>Fegin</code>中，负载均衡是通过集成<code>Ribbon</code>实现的。<code>Ribbon</code>在发起请求前，会从“服务中心” 获取服务列表（清单），然后按照一定的负载均衡策略去发起请求，从而实现客户端的负载均衡。<code>Ribbon</code>本身也维护着服务提供者清单的有效性。如果它发现服务提供者不可用，则会重新从“服务中心“拉起新的服务提供者清单。</li>
+<li>在配置负载均策略时，可以在<code>yaml</code>配置文件中修改，也可以使用如下方式修改。</li>
+</ul>
+<pre><code class="java">@Configuration
+public class LoadBalanceConfig &#123;
+
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate()&#123;
+        return new RestTemplate();
+    &#125;
+    // 配置负载均衡策略
+    @Bean
+    public IRule iRule()&#123;
+        return new RandomRule();
+    &#125;
+&#125;
+</code></pre>
+<p>这个配置指定了负载均衡策略为随机（<code>RandomRule</code>），适用于所有使用<code>@LoadBalanced</code>注解的<code>RestTemplate</code>。</p>
+<h3 id="负载均衡策略具体内容"><a href="#负载均衡策略具体内容" class="headerlink" title="负载均衡策略具体内容"></a>负载均衡策略具体内容</h3><p>Netflix Ribbon提供了多种负载均衡策略，每种策略根据不同的算法和准则选择服务实例。以下是Ribbon中常用的一些负载均衡策略及其作用：</p>
+<ol>
+<li><p><strong>RoundRobinRule</strong>：</p>
+<ul>
+<li>轮询策略。按顺序逐个选择每个服务实例。当列表结束时，循环重新开始。</li>
+</ul>
+</li>
+<li><p><strong>RandomRule</strong>：</p>
+<ul>
+<li>随机策略。随机选择服务实例。</li>
+</ul>
+</li>
+<li><p><strong>RetryRule</strong>：</p>
+<ul>
+<li>重试策略。正常时按照轮训选择服务，若过程中服务出现故障，在轮训一定次数后仍然故障，则会跳过故障的服务继续轮询。</li>
+</ul>
+</li>
+<li><p><strong>BestAvailableRule</strong>：</p>
+<ul>
+<li>最少并发请求策略。先过滤掉由于多次访问故障而处于断路器跳闸状态的服务，选择并发请求最少的服务实例。</li>
+</ul>
+</li>
+<li><p><strong>WeightedResponseTimeRule</strong>：</p>
+<ul>
+<li>加权响应时间策略。根据服务实例的平均响应时间进行加权，响应时间越快的实例被选中的概率越高。如果统计信息不足时，默认按照轮询进行。</li>
+</ul>
+</li>
+<li><p><strong>AvailabilityFilteringRule</strong>：</p>
+<ul>
+<li>可用过滤策略。过滤掉那些因为多次访问故障而处于断路器跳闸状态的服务，以及并发的连接数量超过阈值的服务，然后对剩余的服务列表使用轮询策略。</li>
+</ul>
+</li>
+<li><p><strong>ZoneAvoidanceRule</strong>：</p>
+<ul>
+<li>区域权衡策略。复合判断服务所在区域的性能和服务的可用性选择服务器。</li>
+</ul>
+</li>
+</ol>
+<h2 id="服务容错"><a href="#服务容错" class="headerlink" title="服务容错"></a>服务容错</h2><h3 id="服务容错方案"><a href="#服务容错方案" class="headerlink" title="服务容错方案"></a>服务容错方案</h3><ul>
+<li>服务限流</li>
+<li>服务隔离</li>
+<li>服务超时</li>
+<li>服务熔断</li>
+<li>服务降级</li>
+</ul>
+<h3 id="Sentinel-实现方式"><a href="#Sentinel-实现方式" class="headerlink" title="Sentinel 实现方式"></a>Sentinel 实现方式</h3><pre><code class="java">@Component
+public class UserServiceFallBackFactory implements FallbackFactory&lt;UserService&gt; &#123;
+    @Override
+    public UserService create(Throwable cause) &#123;
+        return new UserService() &#123;
+            @Override
+            public User getUser(Long uid) &#123;
+                User user = new User();
+                user.setId(-1L);
+                return user;
+            &#125;
+        &#125;;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">@FeignClient(value = &quot;server-user&quot;, fallbackFactory = UserServiceFallBackFactory.class)
+public interface UserService &#123;
+    @GetMapping(value = &quot;/user/get/&#123;uid&#125;&quot;)
+    User getUser(@PathVariable(&quot;uid&quot;) Long uid);
+&#125;
+</code></pre>
+<p>实现服务降级，是一种托底的方式。</p>
+<h3 id="Sentinel容错功能汇总"><a href="#Sentinel容错功能汇总" class="headerlink" title="Sentinel容错功能汇总"></a>Sentinel容错功能汇总</h3><h4 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h4><p>在高并发、大流量场景下，进入系统的流量如果不加控制的话，系统就很有可能会被流量压垮。所以，在流量正式进入系统之前，需要对流量进行控制，以便使流量均匀、可控的方式进入系统。</p>
+<p>Sentinel作为一个非常出色的容错组件，能够将不可控的流量经过处理转化成均匀、可控的流量。</p>
+<h4 id="熔断降级"><a href="#熔断降级" class="headerlink" title="熔断降级"></a>熔断降级</h4><p>如果检测到系统中的某个调用链路中某个节点出现故障，比如请求超时、服务宕机或者异常比超出一定阈值时，就会对出现故障的节点的调用频率进行限制，甚至不调用出现故障的节点，让请求能够快速失败并返回，以最大程度避免影响到其他节点的服务而导致系统的级联故障。</p>
+<p>Sentinel主要通过 <strong>限制并发线程数和响应时间</strong> 对资源的访问进行降级。</p>
+<p><strong>1.限制并发线程数进行降级</strong></p>
+<p>Sentinel可以通过限制服务节点的并发线程数量，来减少对其他服务节点的影响。例如，当某个服务节点出现故障，例如响应时间变长，或者直接宕机。此时，对服务的直接影响就是会造成请求线程数的不断堆积。如果这些堆积的线程数达到一定的数量后，对当前服务节点的后续请求就会被拒绝，等到堆积的线程完成任务后再开始继续接收新的请求。</p>
+<p><strong>2.通过响应时间进行降级</strong></p>
+<p>Sentinel除了可以通过限制并发线程数进行降级外，也能够通过响应时间进行降级。如果依赖的服务出现响应时间过长的情况，则所有对该服务的请求都会被拒绝，直到过了指定的时间窗口之后才能再次访问该服务。</p>
+<h4 id="系统负载保护"><a href="#系统负载保护" class="headerlink" title="系统负载保护"></a>系统负载保护</h4><p>Sentinel提供了系统维度的自适应保护能力。当系统的压力和负载比较高的时候，如果还持续让大量的请求进入系统，此时就有可能将系统压垮，进而导致系统宕机。Sentinel会在集群环境下，将本应服务器A承载的流量转发到其他服务器上，比如转发到服务器B上。如果此时服务器B也处于高负载的状态，则Sentinel会提供相应的保护机制，让系统的入口流量和系统的整体负载达到平衡，让系统整体可用，并且能够最大限度的处理请求。</p>
+<h3 id="Sentinel核心规则"><a href="#Sentinel核心规则" class="headerlink" title="Sentinel核心规则"></a>Sentinel核心规则</h3><p>Sentinel的核心规则包括流控规则、熔断规则、热点规则、授权规则和系统规则，每种规则的配置方式不同。</p>
+<h4 id="流控规则"><a href="#流控规则" class="headerlink" title="流控规则"></a>流控规则</h4><p>Sentinel能够对流量进行控制，主要是监控应用的QPS流量或者并发线程数等指标，如果达到指定的阈值时，就会被流量进行控制，以避免服务被瞬时的高并发流量击垮，保证服务的高可靠性。</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2024/01/04/%E5%95%86%E5%93%81%E7%A7%92%E6%9D%80%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+              2024-01-10 15:08:22
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Java/" title="Java">
+                        #Java
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/MicroService/" title="MicroService">
+                        #MicroService
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/SpringBoot/" title="SpringBoot">
+                        #SpringBoot
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/SpringCloud/" title="SpringCloud">
+                        #SpringCloud
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringCloud-Alibaba-%E5%AE%9E%E6%88%98"><span class="toc-text">SpringCloud Alibaba 实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0"><span class="toc-text">服务启动参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86"><span class="toc-text">服务治理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">负载均衡的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5%E5%85%B7%E4%BD%93%E5%86%85%E5%AE%B9"><span class="toc-text">负载均衡策略具体内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99"><span class="toc-text">服务容错</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E6%96%B9%E6%A1%88"><span class="toc-text">服务容错方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sentinel-%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-text">Sentinel 实现方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sentinel%E5%AE%B9%E9%94%99%E5%8A%9F%E8%83%BD%E6%B1%87%E6%80%BB"><span class="toc-text">Sentinel容错功能汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="toc-text">流量控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%86%94%E6%96%AD%E9%99%8D%E7%BA%A7"><span class="toc-text">熔断降级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B4%9F%E8%BD%BD%E4%BF%9D%E6%8A%A4"><span class="toc-text">系统负载保护</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sentinel%E6%A0%B8%E5%BF%83%E8%A7%84%E5%88%99"><span class="toc-text">Sentinel核心规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E6%8E%A7%E8%A7%84%E5%88%99"><span class="toc-text">流控规则</span></a></li></ol></li></ol></li></ol></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          
+              <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+                <i class="iconfont icon-github"></i>
+              </a>
+              
+        </li>
+        
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2024 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + springcloud%20alibaba%20%E5%AE%9E%E6%88%98 + '&url=' + http%3A%2F%2Fexample.com%2F2024%2F01%2F07%2Fspringcloud-alibaba-%25E5%25AE%259E%25E6%2588%2598%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2024/01/07/springcloud-alibaba-%E5%AE%9E%E6%88%98/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>
