@@ -159,7 +159,7 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2024-01-25 22:42:32
+          2024-03-11 13:09:51
         </span>
         
               <span class="post-tags">
@@ -200,10 +200,75 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h 192.168.91.130 -u root -p</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>服务器<code>IP</code>地址：<a target="_blank" rel="noopener" href="http://192.168.91.130/">http://192.168.91.130/</a></li>
+<li>服务器<code>IP</code>地址：192.168.91.130</li>
+<li>activity port: 8082</li>
+<li>goods port: 8083</li>
+<li>order port: 8084</li>
+<li>user port: 8081</li>
 </ul>
-<h2 id="缓存设计"><a href="#缓存设计" class="headerlink" title="缓存设计"></a>缓存设计</h2><p><img src="/%5Cimages%5C%E7%BC%93%E5%AD%98%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99.png" alt="缓存设计原则"></p>
-<h3 id="缓存流程"><a href="#缓存流程" class="headerlink" title="缓存流程"></a>缓存流程</h3><p><img src="/%5Cimages%5C%E7%BC%93%E5%AD%98%E6%B5%81%E7%A8%8B.png" alt="缓存流程"></p>
+<h2 id="缓存设计"><a href="#缓存设计" class="headerlink" title="缓存设计"></a>缓存设计</h2><p><img src="/../images/%E7%BC%93%E5%AD%98%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99.png" alt="缓存设计原则"></p>
+<h3 id="缓存流程"><a href="#缓存流程" class="headerlink" title="缓存流程"></a>缓存流程</h3><p><img src="/../images/%E7%BC%93%E5%AD%98%E6%B5%81%E7%A8%8B.png"></p>
+<h3 id="本地和分布式缓存获取流程"><a href="#本地和分布式缓存获取流程" class="headerlink" title="本地和分布式缓存获取流程"></a>本地和分布式缓存获取流程</h3><p><img src="/../images/%E7%BC%93%E5%AD%98%E8%8E%B7%E5%8F%96%E6%B5%81%E7%A8%8B.png" alt="缓存获取流程"></p>
+<h3 id="事件发布以及缓存更新"><a href="#事件发布以及缓存更新" class="headerlink" title="事件发布以及缓存更新"></a>事件发布以及缓存更新</h3><ul>
+<li>在分布式系统中，如果要新发布一个事件，同步更新缓存会出现一些问题。但是如果使用生产者-消费者模型，能更好的解决问题。生产者只需要生产消息，并将消息发布到对应的消息队列和消息中间件，不必关注消费者是如何取到消息的。</li>
+<li>项目中使用<code>Alibaba</code>开发的<code>COLA</code>框架实现。</li>
+</ul>
+<p><img src="/../images/COLA.png"></p>
+<ul>
+<li>领域层发布一个活动，交给COLA监听。COLA负责监听事件并更新到缓存中。</li>
+</ul>
+<h2 id="防止库存超卖"><a href="#防止库存超卖" class="headerlink" title="防止库存超卖"></a>防止库存超卖</h2><p>一般来说，扣减库存有三种方式，下单扣减库存，付款扣减库存和预扣减库存。</p>
+<p>在这里选择下单扣减库存。</p>
+<p>项目中使用<code>LUA</code>脚本配合<code>Redis</code>，使用原子性操作保证扣减库存时不会有超卖的情况。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- lua逻辑：首先判断活动库存是否存在，如果库存不存在则返回-1，接下来判断传入的要扣减的库存是否大于0，如果要扣减的库存不大于0，则返回-2，库存不足返回-3，扣减库存成功返回1</span></span><br><span class="line"><span class="comment">-- 两个入参：</span></span><br><span class="line"><span class="comment">-- KEYS[1] : 活动库存的key</span></span><br><span class="line"><span class="comment">-- ARGV[1] : 活动库存的扣减数量</span></span><br><span class="line"><span class="keyword">local</span> stock = redis.call(<span class="string">&#x27;get&#x27;</span>, KEYS[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 商品库存不存在</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> stock <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 获取Redis库存和扣减的库存数量</span></span><br><span class="line"><span class="keyword">local</span> intStock = <span class="built_in">tonumber</span>(stock)</span><br><span class="line"><span class="keyword">local</span> paramStock = <span class="built_in">tonumber</span>(ARGV[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 参数不能小于或者等于0</span></span><br><span class="line"><span class="keyword">if</span> paramStock &lt;= <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-2</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 库存不足</span></span><br><span class="line"><span class="keyword">if</span> intStock &lt; paramStock <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-3</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 正常扣减库存</span></span><br><span class="line">redis.call(<span class="string">&#x27;decrby&#x27;</span>,KEYS[<span class="number">1</span>], paramStock)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="微服务架构"><a href="#微服务架构" class="headerlink" title="微服务架构"></a>微服务架构</h2><p><img src="/../images/%E4%B8%8B%E5%8D%95%E6%B5%81%E7%A8%8B.png" alt="下单流程"></p>
+<h2 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h2><h3 id="为什么要有分布式事务"><a href="#为什么要有分布式事务" class="headerlink" title="为什么要有分布式事务"></a>为什么要有分布式事务</h3><ul>
+<li>用户下单如果一切正常，就会扣减库存。但是如果用户下单，完成了扣减库存后，订单微服务出现某些问题，此时商品微服务已经扣减了库存，就会导致库存和订单的数据不一致。这就是为什么要有分布式事务。简而言之就是要保证系统中多个相关联的数据库的数据的一致性。</li>
+</ul>
+<h2 id="异步下单和扣减库存"><a href="#异步下单和扣减库存" class="headerlink" title="异步下单和扣减库存"></a>异步下单和扣减库存</h2><ul>
+<li>借助<code>RocketMQ</code>实现了异步下单，从而达到消峰的目的。</li>
+</ul>
+<p><img src="/../images/%E5%BC%82%E6%AD%A5%E4%B8%8B%E5%8D%95.png"></p>
+<ul>
+<li>下单许可在项目中设置为可用库存数量的1.5倍，这样既有限流作用，又能防止有的人下单不付钱导致最终库存卖不出去。</li>
+<li>创建订单后，先获取下单许可，然后把订单消息发送到消息队列，就可以返回给前端一个成功的标识。</li>
+<li>下单许可的实现其实就是先询问本地缓存这个商品还有多少件(件数是否大于0)，本地没有就从分布式缓存查找，分布式缓存没有就通过数据库的数量乘以下单许可的系数，然后同步到分布式缓存和本地缓存中。</li>
+<li>同理，扣减库存是在处理订单任务的时候，会像商品的消息队列发送half信息，然后异步化的扣减库存。</li>
+</ul>
+<p><img src="/../images/%E6%89%A3%E5%87%8F%E5%BA%93%E5%AD%98%E5%A4%B1%E8%B4%A5%E9%80%86%E6%B5%81.png"></p>
+<ul>
+<li>如果扣减失败，就会回滚，也是异步如上图所示恢复库存。</li>
+</ul>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><ul>
+<li>本地缓存只有在查询的时候才会用到，抗住大流量访问冲击</li>
+<li>分布式缓存+数据库是关于下单过程的</li>
+<li>先预扣减分布式的缓存，然后再扣减数据库<ul>
+<li>如果数据库扣减失败，或者下单过程有问题，分布式缓存rollback</li>
+</ul>
+</li>
+<li>数据库扣减完成，代表订单完成，这时候同步一下分布式缓存，保证强一致性<ul>
+<li>并且在这一步，也用到RocketMQ，实现缓存和数据库的最终一致性。因为有可能Redis宕机，然后数据库更新但是缓存更新失败的情况</li>
+</ul>
+</li>
+</ul>
+<h2 id="异步化下单流程"><a href="#异步化下单流程" class="headerlink" title="异步化下单流程"></a>异步化下单流程</h2><ul>
+<li>获取下单许可，提交下单任务</li>
+<li>收到下单任务，执行</li>
+<li>执行先扣减分布式缓存，然后发送半消息</li>
+<li>收到半消息，执行本地事务（指生成订单，写入数据库）。<ul>
+<li>本地事务执行失败，将扣减的分布式缓存加回来</li>
+<li>疑问，那么半消息就让他烂在broker里面吗？</li>
+</ul>
+</li>
+<li>执行本地事务成功，将状态变成Commit。Broker在定期回查后，将半消息转化为正常消息</li>
+<li>此时，下游的消费者，也就是商品那边可以进行消费。</li>
+<li>商品更新库存<ul>
+<li>如果更新失败，告诉订单服务，订单服务删除生成的订单</li>
+</ul>
+</li>
+<li>更新完库存，同步缓存</li>
+</ul>
 
       </div>
       
@@ -219,7 +284,7 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2024-01-25 22:42:32
+              2024-03-11 13:09:51
             </span>
             
                   <span class="post-tags">
@@ -259,7 +324,7 @@
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%95%86%E5%93%81%E7%A7%92%E6%9D%80%E9%A1%B9%E7%9B%AE"><span class="toc-text">商品秒杀项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">服务器启动命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E8%AE%BE%E8%AE%A1"><span class="toc-text">缓存设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E6%B5%81%E7%A8%8B"><span class="toc-text">缓存流程</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%95%86%E5%93%81%E7%A7%92%E6%9D%80%E9%A1%B9%E7%9B%AE"><span class="toc-text">商品秒杀项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">服务器启动命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E8%AE%BE%E8%AE%A1"><span class="toc-text">缓存设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E6%B5%81%E7%A8%8B"><span class="toc-text">缓存流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98%E8%8E%B7%E5%8F%96%E6%B5%81%E7%A8%8B"><span class="toc-text">本地和分布式缓存获取流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%8F%91%E5%B8%83%E4%BB%A5%E5%8F%8A%E7%BC%93%E5%AD%98%E6%9B%B4%E6%96%B0"><span class="toc-text">事件发布以及缓存更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E6%AD%A2%E5%BA%93%E5%AD%98%E8%B6%85%E5%8D%96"><span class="toc-text">防止库存超卖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="toc-text">微服务架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1"><span class="toc-text">分布式事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1"><span class="toc-text">为什么要有分布式事务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E4%B8%8B%E5%8D%95%E5%92%8C%E6%89%A3%E5%87%8F%E5%BA%93%E5%AD%98"><span class="toc-text">异步下单和扣减库存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98"><span class="toc-text">缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E5%8C%96%E4%B8%8B%E5%8D%95%E6%B5%81%E7%A8%8B"><span class="toc-text">异步化下单流程</span></a></li></ol></li></ol>
       
     </div>
   </div>

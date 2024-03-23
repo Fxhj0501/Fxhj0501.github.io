@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Zijian Feng" />
+  <!-- Open Graph Description 简短摘要-->
+  
+  <!-- 用于搜索引擎的文章摘要 -->
+  
+  <meta name="description" content="欢迎来到冯兄化吉的精神时光屋" />
+  
+  
+  
+  <title>
+    
+     冯兄化吉の精神时光屋
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Oranges</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">Friends</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title"></div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2024-03-23 18:14:29
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <h1 id="小抄"><a href="#小抄" class="headerlink" title="小抄"></a>小抄</h1><p>[toc]</p>
+<h2 id="分布式秒杀平台"><a href="#分布式秒杀平台" class="headerlink" title="分布式秒杀平台"></a>分布式秒杀平台</h2><h3 id="混合缓存模型"><a href="#混合缓存模型" class="headerlink" title="混合缓存模型"></a>混合缓存模型</h3><h4 id="混合缓存架构设计"><a href="#混合缓存架构设计" class="headerlink" title="混合缓存架构设计"></a>混合缓存架构设计</h4><p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240304101522730.png" alt="image-20240304101522730"></p>
+<ul>
+<li>本地缓存选择 Guava Cache，分布式缓存选择Redis。</li>
+<li>在更新分布式缓存上，一次只允许一个线程更新分布式缓存数据。在Redis的基础上，会采用Redisson实现分布式锁，线程在更新分布式缓存数据时，会获取分布式锁，才能更新分布式缓存中的数据。</li>
+</ul>
+<h4 id="缓存设计原则"><a href="#缓存设计原则" class="headerlink" title="缓存设计原则"></a>缓存设计原则</h4><p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240304142114248.png" alt="image-20240304142114248"></p>
+<h4 id="缓存刷新机制"><a href="#缓存刷新机制" class="headerlink" title="缓存刷新机制"></a>缓存刷新机制</h4><p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240304141813349.png" alt="image-20240304141813349">	</p>
+<p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240304141824759.png" alt="image-20240304141824759"></p>
+<h4 id="数据一致性"><a href="#数据一致性" class="headerlink" title="数据一致性"></a>数据一致性</h4><ul>
+<li>强一致性</li>
+</ul>
+<p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240304140011415.png" alt="image-20240304140011415"></p>
+<ul>
+<li>弱一致性</li>
+</ul>
+<p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240304140033681.png" alt="image-20240304140033681"></p>
+<h4 id="异步化下单流程"><a href="#异步化下单流程" class="headerlink" title="异步化下单流程"></a>异步化下单流程</h4><ul>
+<li><p><strong>异步</strong>：订单支付之后，我们要扣减库存、增加积分、发送消息等等，这样一来这个链路就长了，链路一长，响应时间就变长了。引入消息队列，除了<code>更新订单状态</code>，其它的都可以<strong>异步</strong>去做，这样一来就来，就能降低响应时间。</p>
+</li>
+<li><p>先执行保存订单</p>
+<ul>
+<li>参数校验</li>
+<li>获取下单许可（看可用库存数量）</li>
+</ul>
+</li>
+<li><p>发送消息给消息队列（TOPIC_ORDER_MSG）</p>
+</li>
+<li><p>消息队列收到消息后处理订单（handlePlaceOrderTask）</p>
+<ul>
+<li>Redis+Lua脚本完成扣减库存（扣减的是分布式中的，不是数据库的）</li>
+<li>发送半信息给消息队列</li>
+</ul>
+</li>
+<li><p>消息队列GoodsTxMessageListener收到消息后，开始处理。</p>
+</li>
+<li><p>执行updateAvailableStock，更新库存信息</p>
+<ul>
+<li>此处是扣减数据库库存</li>
+<li>如果失败，发送失败消息给消息队列</li>
+</ul>
+</li>
+<li><p>处理失败的消息队列监听到，删除订单信息</p>
+</li>
+</ul>
+<h4 id="为什么会出现分布式事务"><a href="#为什么会出现分布式事务" class="headerlink" title="为什么会出现分布式事务"></a>为什么会出现分布式事务</h4><ul>
+<li>用户下单如果一切正常，就会扣减库存。但是如果用户下单，完成了扣减库存后，订单微服务出现某些问题，此时商品微服务已经扣减了库存，就会导致库存和订单的数据不一致。这就是为什么要有分布式事务。简而言之就是要保证系统中多个相关联的数据库的数据的一致性。</li>
+</ul>
+<h4 id="RocketMQ处理分布式事务"><a href="#RocketMQ处理分布式事务" class="headerlink" title="RocketMQ处理分布式事务"></a>RocketMQ处理分布式事务</h4><p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240305181653779.png" alt="image-20240305181653779"></p>
+<ul>
+<li>如果在发送半消息的时候RocketMQ挂了，会抛出异常。然后我对于<code>placeOrder</code>这个方法加了<code>@Transactional</code>注解，这样扣减的库存会回滚。</li>
+<li>第一个半消息是发送给</li>
+</ul>
+<h4 id="还有哪些方式能实现防超卖"><a href="#还有哪些方式能实现防超卖" class="headerlink" title="还有哪些方式能实现防超卖"></a>还有哪些方式能实现防超卖</h4><ul>
+<li>数据库</li>
+<li>分布式锁</li>
+<li>Redis+Lua脚本</li>
+</ul>
+<h4 id="如何确保幂等性"><a href="#如何确保幂等性" class="headerlink" title="如何确保幂等性"></a>如何确保幂等性</h4><ul>
+<li>用Redis实现一个日志功能。就是如果一个订单如果已经执行过，就放入Redis中。如果在操作订单之前，要查询日志，这个订单是否做过。（这里用的set命令，相当于起到一个分布式锁的作用。set成功表示没做过，不成功表示已经做过了。然后过期时间设置的是一天。）</li>
+<li>写入数据库的时候，使用</li>
+</ul>
+<h4 id="保证消息不丢失"><a href="#保证消息不丢失" class="headerlink" title="保证消息不丢失"></a>保证消息不丢失</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6854573217663844365#heading-0">保证消息不丢失，不重复消费</a></li>
+</ul>
+<h4 id="如果处理消息堆积"><a href="#如果处理消息堆积" class="headerlink" title="如果处理消息堆积"></a>如果处理消息堆积</h4><ul>
+<li><p>消息的堆积往往是因为<strong>生产者的生产速度与消费者的消费速度不匹配</strong>。有可能是因为消息消费失败反复重试造成的，也有可能就是消费者消费能力弱，渐渐地消息就积压了。</p>
+<p>因此我们需要<strong>先定位消费慢的原因</strong>，如果是<code>bug</code>则处理 <code>bug</code> ，如果是因为本身消费能力较弱，我们可以优化下消费逻辑，比如之前是一条一条消息消费处理的，这次我们批量处理，比如数据库的插入，一条一条插和批量插效率是不一样的。</p>
+<p>假如逻辑我们已经都优化了，但还是慢，那就得考虑水平扩容了，增加<code>Topic</code>的队列数和消费者数量，<strong>注意队列数一定要增加</strong>，不然新增加的消费者是没东西消费的。<strong>一个Topic中，一个队列只会分配给一个消费者</strong>。</p>
+<p>当然你消费者内部是单线程还是多线程消费那看具体场景。不过要注意上面提高的消息丢失的问题，如果你是将接受到的消息写入<strong>内存队列</strong>之后，然后就返回响应给<code>Broker</code>，然后多线程向内存队列消费消息，假设此时消费者宕机了，内存队列里面还未消费的消息也就丢了。</p>
+</li>
+</ul>
+<h2 id="King-of-Bots"><a href="#King-of-Bots" class="headerlink" title="King of Bots"></a>King of Bots</h2><h4 id="实现模块"><a href="#实现模块" class="headerlink" title="实现模块"></a>实现模块</h4><ul>
+<li>pk：<ul>
+<li>匹配模块（微服务）</li>
+<li>实况直播（websocket）</li>
+<li>对战（websocket）</li>
+<li>bot代码执行（微服务）</li>
+</ul>
+</li>
+<li>对战列表<ul>
+<li>对局记录以及该局的录像回放</li>
+</ul>
+</li>
+<li>排行榜</li>
+<li>用户中心<ul>
+<li>注册</li>
+<li>登录</li>
+<li>我的bot</li>
+<li>bot记录</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230327065937863.png" alt="image-20230327065937863"></p>
+<h4 id="地图的创建"><a href="#地图的创建" class="headerlink" title="地图的创建"></a>地图的创建</h4><ul>
+<li><p>建一个基类，使用requestAnimationFrame，基于浏览器的刷新频率，保证60赫兹刷新，更新状态</p>
+</li>
+<li><p>中心对称-保证公平</p>
+</li>
+<li><p>玩家一出现在左下角，玩家二出现在右上角</p>
+</li>
+<li><p>每次对局随机生成墙体，使得每次对战都不一样，增加趣味性</p>
+<ul>
+<li>生成墙体时使用dfs算法保证图是联通的</li>
+</ul>
+</li>
+</ul>
+<h4 id="蛇的移动"><a href="#蛇的移动" class="headerlink" title="蛇的移动"></a>蛇的移动</h4><ul>
+<li>为了保证蛇移动时候平滑，因此只移动蛇的末尾和头部<ul>
+<li>创建新的头部</li>
+<li>看本回合是否边长<ul>
+<li>不变长就将尾部走到尾部上个节点，然后移除尾部</li>
+<li>否则尾部不动即可</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Springboot中的层"><a href="#Springboot中的层" class="headerlink" title="Springboot中的层"></a>Springboot中的层</h4><ul>
+<li>pojo层：将数据库中的表对应为Java中的类</li>
+<li>mapper层：将pojo层的class中的操作（CRUD）转为sql，让数据持久化</li>
+<li>service层：写具体逻辑业务，组合mapper使用</li>
+<li>controller层：负责请求转发，接受前端的参数，传给对应的service进行处理，收到返回值再传给前端</li>
+</ul>
+<h4 id="用户验证"><a href="#用户验证" class="headerlink" title="用户验证"></a>用户验证</h4><ul>
+<li><p>使用Jwt而非传统的session</p>
+</li>
+<li><p>传统session：</p>
+<ul>
+<li><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230327001042576.png" alt="image-20230327001042576"></li>
+</ul>
+</li>
+<li><p>JWT验证：</p>
+<ul>
+<li><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230327001427273.png" alt="image-20230327001427273"></p>
+</li>
+<li><p>优势如下：</p>
+<ul>
+<li><p>传统Session认证需要在服务器端维护一个会话状态，服务器会生成一个Session ID，将其保存在Cookie中发送给客户端。客户端每次请求时，都需要在请求头或请求参数中携带该Session ID，以便服务器进行识别和认证。这种方式下，因为Session ID 存在Cookie中，而浏览器对于不同域名下的Cookie有安全限制，因此会导致跨域请求失败的问题。</p>
+<p>而JWT是将用户信息封装在一个Token中，在服务器端进行加密签名后，返回给客户端，以便客户端在每次请求时携带该Token。因为Token是基于HTTP协议传输的，不需要在客户端和服务器端保存状态信息，也不需要涉及到Cookie，因此不会存在跨域请求失败的问题。</p>
+<p>总之，传统Session认证是基于Cookie和会话状态维护的，会受到跨域限制，而JWT是基于Token的认证方式，不需要维护会话状态，可以轻松解决跨域问题。</p>
+</li>
+<li><p>对于有多个服务器的情况，就可以实现用一个令牌来登录多个服务器</p>
+</li>
+</ul>
+</li>
+<li><p>由于jwt-token存放在本地，在退出时删除本地的token即可</p>
+<p>SpringSecurity</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="SpringSecurity"><a href="#SpringSecurity" class="headerlink" title="SpringSecurity"></a>SpringSecurity</h4><p>配置<code>config.SecurityConfig</code>类，放行登录、注册等接口</p>
+<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230327003550786.png" alt="image-20230327003550786"></p>
+<h4 id="流程分析"><a href="#流程分析" class="headerlink" title="流程分析"></a>流程分析</h4><ul>
+<li>当不同的用户进行匹配的时候，就会给后端websocket建立一个链接</li>
+<li>当匹配成功后，为了能实现多局游戏同时进行，就使用多线程，将每局游戏当做一个线程。</li>
+<li>websocket收到前端传来键盘的按键，就会修改<code>nextStep</code>,而game线程会需要读取<code>nextStep</code>。因此需要锁保持读写一致</li>
+</ul>
+<h4 id="匹配系统（微服务）"><a href="#匹配系统（微服务）" class="headerlink" title="匹配系统（微服务）"></a>匹配系统（微服务）</h4><ul>
+<li>微服务可以理解为在SpringBoot之外的另外一个Server，负责处理一段独立的功能，与SpringBoot Server之间通过http通信。在游戏的匹配系统，之前是简单粗暴的放在一个集合上，当集合元素大于2时，取出两名玩家进行匹配，无法适应更加复杂的场景，因此现在要将这段程序独立出来。</li>
+<li>微服务有多种实现方式，这里采用SpringCloud。SpringCloud和SpringBoot都相当于一个Web Server两者之间通过Http通信</li>
+<li>向<code>MatchingSystem</code>发请求，需要借助<code>Springboot</code>中的一个工具&#96;&#96;，它可以在两个Spring进程之间进行通信。</li>
+<li><strong>功能</strong>：<ul>
+<li>匹配系统在接收到来自游戏后端的匹配请求之后，会将当前参与匹配的所有用户，放在一个池子（数组）里面。开辟额外新线程，每隔1s就扫描一遍整个数组，将能够匹配的玩家匹配到一起。我们期望匹配相近分值的玩家，随着时间的推移，可以逐步放宽分值要求，也就是允许两名匹配玩家的分值差距较大，直到所有玩家都可以在规定时间内匹配在一块为止。具体来说，第一秒，匹配分值差距10以内的玩家，第二秒，匹配分值差距20以内的玩家…..直到匹配完成为止。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Bot代码执行（微服务）"><a href="#Bot代码执行（微服务）" class="headerlink" title="Bot代码执行（微服务）"></a>Bot代码执行（微服务）</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230327024203189.png" alt="image-20230327024203189"></p>
+<ul>
+<li><p>生产者—消费者模式</p>
+<ul>
+<li><p>这部分的工作在于，不断的接收用户的输入，将接收到的代码放在一个队列里面，也就是队列中存储当前所有的任务。每接收一个来自生产者的任务过来，就将其放在队列里。BotPool相当于消费者，每完成一个任务，检查一下队列是否为空，如果队列不空，就从队头取出代码执行。执行完之后继续检查。</p>
+</li>
+<li><p>MatchingPool中的循环，每循环一次，sleep一秒钟，但BotPool中的循环，为了保证用户体验，需要满足一旦有任务，立即执行。执行完之后，如果队列为空，就继续等待。因此两者循环的实现逻辑不一样，后者用到条件变量。</p>
+</li>
+<li><p>消费者线程：</p>
+<ul>
+<li>如果任务队列为空，就要将其阻塞，当有任务出现时，就要发生信号量，将其唤醒。因此需要用到条件变量。</li>
+<li>此外还需要队列，来存储<code>Bot</code>，定义一个<code>Bot</code>类，并定义一个存储Bot对象的队列<code>Queue&lt;Bot&gt;</code>。<ul>
+<li>生产者和消费者都会对<code>Queue&lt;Bot&gt;</code>进行操作，因此处理的时候需要加锁。</li>
+</ul>
+</li>
+<li>如果队列为空，线程将会被阻塞。当<code>addBot()</code>被调用，队列中添加新的任务时，线程将会被唤醒</li>
+<li>开启一个comsumer线程，用来编译代码：需要使用到<code>joor.Reflect</code>类来动态编译执行一段代码</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="老板模式"><a href="#老板模式" class="headerlink" title="老板模式"></a>老板模式</h4><ul>
+<li><p>有些时候玩家匹配成功之后，游戏过程中，突然老板进来了，然后此时立刻关闭网页。也就是不通过请求的方式想匹配系统发起取消匹配，而是直接断开连接。也就是针对：玩家在匹配池，但是玩家已经断开连接</p>
+</li>
+<li><p>报异常的原因是因为，<code>userConnectionInfo.get(userA.getId())</code>返回的是一个空对象，然后空对象是没有<code>game</code>属性的，所以会报错。</p>
+<p>因此这里需要加一些判断。如果已经断开连接，还是将其匹配到一起，但是6秒之内没有接收到操作就会判输。</p>
+</li>
+</ul>
+<h4 id="排行榜"><a href="#排行榜" class="headerlink" title="排行榜"></a>排行榜</h4><ul>
+<li>在后端取出数据进行排序</li>
+<li>定义好一页几个数据，按降序排序</li>
+<li><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230327065143871.png" alt="image-20230327065143871"></li>
+</ul>
+<h2 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h2><h4 id="面向对象三大特性"><a href="#面向对象三大特性" class="headerlink" title="面向对象三大特性"></a>面向对象三大特性</h4><h4 id="重载和重写"><a href="#重载和重写" class="headerlink" title="重载和重写"></a>重载和重写</h4><ul>
+<li>重载：重载就是同样的⼀个⽅法能够根据输⼊数据的不同，做出不同的处理<ul>
+<li>发⽣在同⼀个类中（或者⽗类和⼦类之间），⽅法名必须相同，参数类型不同、个数不同、顺序不 同，⽅法返回值和访问修饰符可以不同。</li>
+</ul>
+</li>
+<li>重写 重写发⽣在运⾏期，是⼦类对⽗类的允许访问的⽅法的实现过程进⾏重新编写。 </li>
+<li>⽅法名、参数列表必须相同，⼦类⽅法返回值类型应⽐⽗类⽅法返回值类型更⼩或相等，抛出的 异常范围⼩于等于⽗类，访问修饰符范围⼤于等于⽗类。</li>
+<li>如果⽗类⽅法访问修饰符为 private&#x2F;final&#x2F;static 则⼦类就不能重写该⽅法，但是被 static 修饰的 ⽅法能够被再次声明。 </li>
+<li>构造⽅法⽆法被重写 </li>
+<li>综上：重写就是⼦类对⽗类⽅法的重新改造，外部样⼦不能改变，内部逻辑可以改变。</li>
+</ul>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230325214332359.png" alt="image-20230325214332359">、</p>
+<h4 id="构造方法有哪些特点？是否可以被override？"><a href="#构造方法有哪些特点？是否可以被override？" class="headerlink" title="构造方法有哪些特点？是否可以被override？"></a>构造方法有哪些特点？是否可以被override？</h4><ul>
+<li>名字与类名相同。</li>
+<li>没有返回值，但不能⽤ void 声明构造函数。 </li>
+<li>⽣成类的对象时⾃动执⾏，⽆需调⽤。 </li>
+<li>构造⽅法不能被 override（重写）,但是可以 overload（重载）,所以你可以看到⼀个类中有多个构造 函数的情况。</li>
+</ul>
+<h4 id="不做事的无参构造方法有什么用"><a href="#不做事的无参构造方法有什么用" class="headerlink" title="不做事的无参构造方法有什么用"></a>不做事的无参构造方法有什么用</h4><p><strong>Java 程序在执行子类的构造方法之前，如果没有用 super() 来调用父类特定 的构造方法，则会调用父类中“没有参数的构造方法”。因此，如果父类中只定 义了有参数的构造方法，而在子类的构造方法中又没有用 super() 来调用父类 中特定的构造方法，则编译时将发生错误，因为 Java 程序在父类中找不到没 有参数的构造方法可供执行。解决办法是在父类里加上一个不做事且没有参数 的构造方法</strong></p>
+<p>如果⼀个类没有声明构造⽅法，也可以执⾏！因为⼀个类即使没有声明构造⽅法也会有默认的不带参 数的构造⽅法。如果我们⾃⼰添加了类的构造⽅法（⽆论是否有参），Java 就不会再添加默认的⽆ 参数的构造⽅法了，我们⼀直在不知不觉地使⽤构造⽅法，这也是为什么我们在创建对象的时候后⾯ 要加⼀个括号（因为要调⽤⽆参的构造⽅法）。如果我们重载了有参的构造⽅法，记得都要把⽆参的 构造⽅法也写出来（⽆论是否⽤到）。</p>
+<h4 id="创建对象的方式"><a href="#创建对象的方式" class="headerlink" title="创建对象的方式"></a>创建对象的方式</h4><p>在Java中，可以通过以下几种方式来创建对象：</p>
+<ol>
+<li>使用关键字 <code>new</code> 实例化对象：这是最常见的创建对象的方式，使用 <code>new</code> 关键字可以创建一个类的实例对象，例如 <code>ClassName objectName = new ClassName();</code>。</li>
+<li>使用反射机制创建对象：Java中的反射机制可以在程序运行时动态地加载和创建对象，例如 <code>Class.forName(&quot;com.example.ClassName&quot;).newInstance();</code>。</li>
+<li>使用clone()方法创建对象：Clone()方法可以创建对象的副本，用于创建与已有对象相同的新对象，例如 <code>ClassName newObject = (ClassName) oldObject.clone();</code>。</li>
+<li>使用工厂方法创建对象：工厂方法是一种创建对象的设计模式，通过创建一个工厂类来封装对象的创建过程，例如 <code>ClassName objectName = ClassNameFactory.create();</code>。</li>
+<li>使用反序列化创建对象：Java中的反序列化机制可以将对象从二进制数据流中还原出来，例如 <code>ObjectInputStream in = new ObjectInputStream(new FileInputStream(&quot;data.obj&quot;)); ClassName objectName = (ClassName) in.readObject();</code>。</li>
+</ol>
+<h4 id="抽象类和接口的区别"><a href="#抽象类和接口的区别" class="headerlink" title="抽象类和接口的区别"></a>抽象类和接口的区别</h4><ul>
+<li><p>共同点 ：</p>
+<ul>
+<li>都不能被实例化。</li>
+<li>都可以包含抽象⽅法。 </li>
+<li>都可以有默认实现的⽅法（Java 8 可以⽤ default 关键字在接⼝中定义默认⽅法）。</li>
+</ul>
+</li>
+<li><p>区别 ：</p>
+<ul>
+<li><p>接⼝主要⽤于对类的⾏为进⾏约束，你实现了某个接⼝就具有了对应的⾏为。</p>
+</li>
+<li><p>抽象类主要⽤于代 码复⽤，强调的是所属关系。 ⼀个类只能继承⼀个类，但是可以实现多个接⼝。 </p>
+</li>
+<li><p>接⼝中的成员变量只能是 public static final 类型的，不能被修改且必须有初始值，⽽抽象类的 成员变量默认 default，可在⼦类中被重新定义，也可被重新赋值。</p>
+</li>
+<li><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230325220619186.png" alt="image-20230325220619186"></p>
+</li>
+<li><p>接口和抽象类各有优缺点，在接口和抽象类的选择上，必须遵守这样一个原则：</p>
+<p>1.行为模型应该总是通过接口而不是抽象类定义，所以通常是优先选用接口，尽量少用抽象类。<br>2.选择抽象类的时候通常是如下情况：需要定义子类的行为，又要为子类提供通用的功能。</p>
+<p>普通类和抽象类有哪些区别？</p>
+<p>普通类不能包含抽象方法，抽象类可以包含抽象方法。<br>抽象类不能直接实例化，普通类可以直接实例化。<br>抽象类能使用 final 修饰吗？<br>答：不能，定义抽象类就是让其他类继承的，如果定义为 final 该类就不能被继承，这样彼此就会产生矛盾，所以 final 不能修饰抽象类</p>
+<p>创建一个对象用什么关键字？对象实例与对象引用有何不同？<br>new关键字，new创建对象实例（对象实例在堆内存中），对象引用指向对象实例（对象引用存放在栈内存中）。一个对象引用可以指向0个或1个对象（一根绳子可以不系气球，也可以系一个气球）;一个对象可以有n个引用指向它（可以用n条绳子系住一个气球）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="基本类型和包装类"><a href="#基本类型和包装类" class="headerlink" title="基本类型和包装类"></a>基本类型和包装类</h4><ul>
+<li>成员变量包装类型不赋值就是 null ，⽽基本类型有默认值且不是 null 。 </li>
+<li>包装类型可⽤于泛型，⽽基本类型不可以。 基本数据类型的局部变量存放在 Java 虚拟机栈中的局部变量表中，基本数据类型的成员变量 （未被 static 修饰 ）存放在 Java 虚拟机的堆中。包装类型属于对象类型，我们知道⼏乎所有 对象实例都存在于堆中。 </li>
+<li>相⽐于对象类型， 基本数据类型占⽤的空间⾮常⼩。</li>
+</ul>
+<h4 id="装箱和拆箱"><a href="#装箱和拆箱" class="headerlink" title="装箱和拆箱"></a>装箱和拆箱</h4><ul>
+<li>装箱：将基本类型⽤它们对应的引⽤类型包装起来； </li>
+<li>拆箱：将包装类型转换为基本数据类型</li>
+<li>从字节码中，我们发现装箱其实就是调⽤了 包装类的 valueOf() ⽅法，拆箱其实就是调⽤了 xxxValue() ⽅法。 因此， Integer i &#x3D; 10 等价于 Integer i &#x3D; Integer.valueOf(10) int n &#x3D; i 等价于 int n &#x3D; i.intValue()</li>
+</ul>
+<h4 id="x3D-x3D-和equals的区别（重点）"><a href="#x3D-x3D-和equals的区别（重点）" class="headerlink" title="&#x3D;&#x3D; 和equals的区别（重点）"></a>&#x3D;&#x3D; 和equals的区别（重点）</h4><ul>
+<li><p>对于基本数据类型来说， &#x3D;&#x3D; ⽐较的是值。</p>
+</li>
+<li><p>对于引⽤数据类型来说， &#x3D;&#x3D; ⽐较的是对象的内存地址</p>
+</li>
+<li><p>equals() 不能⽤于判断基本数据类型的变量，只能⽤来判断两个对象是否相等。 equals() ⽅法存在 于 Object 类中，⽽ Object 类是所有类的直接或间接⽗类，因此所有的类都有 equals() ⽅法。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object obj)</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> (<span class="built_in">this</span> == obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>equals() ⽅法存在两种使⽤情况： </p>
+<ul>
+<li>类没有重写 equals() ⽅法 ：通过 equals() ⽐᫾该类的两个对象时，等价于通过“&#x3D;&#x3D;”⽐᫾这两个 对象，使⽤的默认是 Object 类 equals() ⽅法。</li>
+<li>类重写了 equals() ⽅法 ：⼀般我们都重写 equals() ⽅法来⽐较两个对象中的属性是否相等； 若它们的属性相等，则返回 true(即，认为这两个对象相等)。</li>
+</ul>
+<h4 id="hashcode与equals"><a href="#hashcode与equals" class="headerlink" title="hashcode与equals()"></a>hashcode与equals()</h4><ul>
+<li>为什么需要hashcode<ul>
+<li>当你把对象加⼊ HashSet 时， HashSet 会先计算对象的 hashCode 值来判断对象加⼊的位 置，同时也会与其他已经加⼊的对象的 hashCode 值作⽐᫾，如果没有相符的 hashCode ， HashSet 会假设对象没有重复出现。但是如果发现有相同 hashCode 值的对象， 这时会调⽤ equals() ⽅法来检查 hashCode 相等的对象是否真的相同。如果两者相同， HashSet 就不会让其加⼊操作成功。如果不同的话，就会重新散列到其他位置。<strong>这样我们 就⼤⼤减少了 equals 的次数，相应就⼤⼤提⾼了执⾏速度</strong></li>
+</ul>
+</li>
+<li>为什么又hashcode还需要equals()：<ul>
+<li>如果两个对象的 hashCode 值相等，那这两个对象不⼀定相等（哈希碰撞）。 如果两个对象的 hashCode 值相等并且 equals() ⽅法也返回 true ，我们才认为这两个对象相 等。 如果两个对象的 hashCode 值不相等，我们就可以直接认为这两个对象不相等</li>
+</ul>
+</li>
+</ul>
+<h4 id="为什么重写-equals-时必须重写-hashCode-⽅法"><a href="#为什么重写-equals-时必须重写-hashCode-⽅法" class="headerlink" title="为什么重写 equals() 时必须重写 hashCode() ⽅法"></a>为什么重写 equals() 时必须重写 hashCode() ⽅法</h4><p>如果一个类没有重写 <code>hashCode()</code> 方法，那么它的 <code>hashCode()</code> 方法将会使用默认行为，即对对象在堆上的存储地址进行哈希计算，生成一个独特的哈希码值。，如果一个类没有重写 <code>hashCode()</code> 方法，那么它的哈希码将会基于对象在堆上的存储地址，与属性值无关。这就会导致即使两个对象的属性值完全相同，它们的哈希码也不同。</p>
+<p>因为两个相等的对象的 hashCode 值必须是相等。也就是说如果 equals ⽅法判断两个对象是相等 的，那这两个对象的 hashCode 值也要相等。 如果重写 equals() 时没有重写 hashCode() ⽅法的话就可能会导致 equals ⽅法判断是相等的两个 对象， hashCode 值却不相等</p>
+<h4 id="序列化和反序列化"><a href="#序列化和反序列化" class="headerlink" title="序列化和反序列化"></a>序列化和反序列化</h4><ul>
+<li><p>序列化： 将数据结构或对象转换成⼆进制字节流的过程 </p>
+</li>
+<li><p>反序列化：将在序列化过程中所⽣成的⼆进制字节流转换成数据结构或者对象的过程</p>
+</li>
+</ul>
+<h4 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h4><ul>
+<li>什么是反射：JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。</li>
+<li><strong>静态编译：</strong>在编译时确定类型，绑定对象</li>
+<li><strong>动态编译：</strong>运行时确定类型，绑定对象</li>
+<li>举例：在springboot中，<code>@Autowired</code> 注解实现了依赖注入的功能，其中就涉及到了反射机制。具体来说，当 Spring 容器需要将一个 Bean 注入到另一个 Bean 中时，它会通过反射机制获取该 Bean 的类型信息。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://javaguide.cn/java/basis/java-basic-questions-03.html#%E5%8F%8D%E5%B0%84">反射</a></p>
+<h4 id="JVM、JRE和JDK的关系"><a href="#JVM、JRE和JDK的关系" class="headerlink" title="JVM、JRE和JDK的关系"></a>JVM、JRE和JDK的关系</h4><ul>
+<li>JVM<br>Java Virtual Machine是Java虚拟机，Java程序需要运行在虚拟机上，不同的平台有自己的虚拟机，因此Java语言可以实现跨平台。</li>
+<li>JRE<br>Java Runtime Environment包括Java虚拟机和Java程序所需的核心类库等。核心类库主要是java.lang包：包含了运行Java程序必不可少的系统类，如基本数据类型、基本数学函数、字符串处理、线程、异常处理类等，系统缺省加载这个包<br>如果想要运行一个开发好的Java程序，计算机中只需要安装JRE即可。</li>
+<li>JDK<br>Java Development Kit是提供给Java开发人员使用的，其中包含了Java的开发工具，也包括了JRE。所以安装了JDK，就无需再单独安装JRE了。其中的开发工具：编译工具(javac.exe)，打包工具(jar.exe)等</li>
+<li><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230325210306408.png" alt="image-20230325210306408"></li>
+</ul>
+<h4 id="什么是字节码"><a href="#什么是字节码" class="headerlink" title="什么是字节码"></a>什么是字节码</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230325210444522.png" alt="image-20230325210444522"></p>
+<h4 id="String、StringBuffer、StringBuilder"><a href="#String、StringBuffer、StringBuilder" class="headerlink" title="String、StringBuffer、StringBuilder"></a>String、StringBuffer、StringBuilder</h4><p>String 中的对象是不可变的，也就可以理解为常量，线程安全。 AbstractStringBuilder 是 StringBuilder 与 StringBuffer 的公共⽗类，定义了⼀些字符串的基本操作，如 expandCapacity 、 append 、 insert 、 indexOf 等公共⽅法。 <strong>StringBuffer <strong>对⽅法加了同步锁或者 对调⽤的⽅法加了同步锁，所以是</strong>线程安全的</strong>。 <strong>StringBuilder</strong> 并没有对⽅法进⾏加同步锁，所以是 <strong>⾮线程安全的</strong>。 性能 每次对 String 类型进⾏改变的时候，都会⽣成⼀个新的 String 对象，然后将指针指向新的 String 对象。 StringBuffer 每次都会对 StringBuffer 对象本身进⾏操作，⽽不是⽣成新的对象并改 变对象引⽤。相同情况下使⽤ StringBuilder 相⽐使⽤ StringBuffer 仅能获得 10%~15% 左右的性 能提升，但却要冒多线程不安全的⻛险。 </p>
+<p>对于三者使⽤的总结： </p>
+<ol>
+<li>操作少量的数据: 适⽤ String</li>
+<li>单线程操作字符串缓冲区下操作⼤量数据: 适⽤ StringBuilder </li>
+<li>多线程操作字符串缓冲区下操作⼤量数据: 适⽤ StringBuffer</li>
+</ol>
+<h4 id="try-catch-finally-如何使用？"><a href="#try-catch-finally-如何使用？" class="headerlink" title="try-catch-finally 如何使用？"></a>try-catch-finally 如何使用？</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411225457334.png" alt="image-20230411225457334"></p>
+<ul>
+<li><p>当try代码块中出现return语句时，finally块中的代码会在return语句执行之前执行。如果finally块中也有return语句，则会覆盖try块中的返回值，并将其返回给调用者。如果finally块中没有return语句，则会使用try块中的返回值作为方法的返回值。</p>
+<p>需要注意的是，在某些特殊情况下，finally块中的代码可能不会被执行，例如当JVM崩溃或者执行System.exit()方法时，finally块中的代码不会被执行。此外，如果try块中抛出的是Error或者其他非捕获异常（如ThreadDeath），则不会执行finally块中的代码。</p>
+</li>
+<li><p>finally中的代码不一定会被执行。比如说catch语句中有下列语句，就不会被执行</p>
+</li>
+<li><pre><code class="java">// 终止当前正在运行的Java虚拟机
+    System.exit(1);
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### Java集合</span><br><span class="line"></span><br><span class="line">#### 常见的容器</span><br><span class="line"></span><br><span class="line">Java 集合， 也叫作容器，主要是由两⼤接⼝派⽣⽽来：</span><br><span class="line"></span><br><span class="line">- ⼀个是 Collection 接⼝，主要⽤于存放单⼀ 元素；</span><br><span class="line">  - 对于 Collection 接⼝，下⾯⼜有三个主要的⼦ 接⼝： List 、 Set 和 Queue </span><br><span class="line">- 另⼀个是 Map 接⼝，主要⽤于存放键值对。</span><br><span class="line"></span><br><span class="line">#### ArrayList插入和删除元素的时间复杂度</span><br><span class="line"></span><br><span class="line">对于插入：</span><br><span class="line"></span><br><span class="line">- 头部插入：由于需要将所有元素都依次向后移动一个位置，因此时间复杂度是 O(n)。</span><br><span class="line">- 尾部插入：当 `ArrayList` 的容量未达到极限时，往列表末尾插入元素的时间复杂度是 O(1)，因为它只需要在数组末尾添加一个元素即可；当容量已达到极限并且需要扩容时，则需要执行一次 O(n) 的操作将原数组复制到新的更大的数组中，然后再执行 O(1) 的操作添加元素。</span><br><span class="line">- 指定位置插入：需要将目标位置之后的所有元素都向后移动一个位置，然后再把新元素放入指定位置。这个过程需要移动平均 n/2 个元素，因此时间复杂度为 O(n)。</span><br><span class="line"></span><br><span class="line">对于删除：</span><br><span class="line"></span><br><span class="line">- 头部删除：由于需要将所有元素依次向前移动一个位置，因此时间复杂度是 O(n)。</span><br><span class="line">- 尾部删除：当删除的元素位于列表末尾时，时间复杂度为 O(1)。</span><br><span class="line">- 指定位置删除：需要将目标元素之后的所有元素向前移动一个位置以填补被删除的空白位置，因此需要移动平均 n/2 个元素，时间复杂度为 O(n)。</span><br><span class="line"></span><br><span class="line">#### LinkedList插入和删除元素的时间复杂度</span><br><span class="line"></span><br><span class="line">头部插入/删除：只需要修改头结点的指针即可完成插入/删除操作，因此时间复杂度为 O(1)。</span><br><span class="line"></span><br><span class="line">尾部插入/删除：只需要修改尾结点的指针即可完成插入/删除操作，因此时间复杂度为 O(1)。</span><br><span class="line"></span><br><span class="line">指定位置插入/删除：需要先移动到指定位置，再修改指定节点的指针完成插入/删除，因此需要移动平均 n/2 个元素，时间复杂度为 O(n)。</span><br><span class="line"></span><br><span class="line">#### ArrayList与LinkedList的区别</span><br><span class="line"></span><br><span class="line">- 是否保证线程安全： ArrayList 和 LinkedList 都是不同步的，也就是不保证线程安全； </span><br><span class="line">- 底层数据结构： ArrayList 底层使⽤的是 **Object 数组**； LinkedList 底层使⽤的是 **双向链表** 数据结构（JDK1.6 之前为循环链表，JDK1.7 取消了循环。注意双向链表和双向循环链表的区 别，下⾯有介绍到！） </span><br><span class="line">- 插⼊和删除是否受元素位置的影响： ArrayList 采⽤数组存储，所以插⼊和删除元素的时间复杂度受元素位置的影响。 ⽐如： 执⾏ add(E e) ⽅法的时候， ArrayList 会默认在将指定的元素追加到此列表的末尾，这种 情况时间复杂度就是 O(1)。但是如果要在指定位置 i 插⼊和删除元素的话（ add(int index, E element) ）时间复杂度就为 O(n-i)。因为在进⾏上述操作的时候集合中第 i 和第 i 个元素之 后的(n-i)个元素都要执⾏向后位/向前移⼀位的操作。 LinkedList 采⽤链表存储，所以，如果是在头尾插⼊或者删除元素不受元素位置的影响 （ add(E e) 、 addFirst(E e) 、 addLast(E e) 、 removeFirst() 、 removeLast() ），时间复杂 度为 O(1)，如果是要在指定位置 i 插⼊和删除元素的话（ add(int index, E element) ， remove(Object o) ）， 时间复杂度为 O(n) ，因为需要先移动到指定位置再插 ⼊。</span><br><span class="line">- 是否⽀持快速随机访问： LinkedList 不⽀持⾼效的随机元素访问，⽽ ArrayList ⽀持。快速随机访问就是通过元素的序号快速获取元素对象(对应于 get(int index) ⽅法)。 </span><br><span class="line">- 内存空间占⽤： ArrayList 的空 间浪费主要体现在在 list 列表的结尾会预留⼀定的容量空间， ⽽ LinkedList 的空间花费则体现在它的每⼀个元素都需要消耗⽐ ArrayList 更多的空间（因为要 存放直接后继和直接前驱以及数据）</span><br><span class="line"></span><br><span class="line">#### ArrayList 实现 RandomAccess 接口有何作用？为何 LinkedList 却没实现这个接口？</span><br><span class="line"></span><br><span class="line">- 查看源码我们发现实际上 RandomAccess 接⼝中什么都没有定义。所以，在我看来 RandomAccess 接⼝不过是⼀个标识罢了。标识什么？ 标识实现这个接⼝的类具有随机访问功能</span><br><span class="line">- ArrayList 实现了 RandomAccess 接⼝， ⽽ LinkedList 没有实现。为什么呢？我觉得还是和底层 数据结构有关！ ArrayList 底层是数组，⽽ LinkedList 底层是链表。数组天然⽀持随机访问，时间 复杂度为 O(1)，所以称为快速随机访问。链表需要遍历到特定位置才能访问特定位置的元素，时间 复杂度为 O(n)，所以不⽀持快速随机访问。ArrayList 实现了 RandomAccess 接⼝，就表明了他 具有快速随机访问功能。 </span><br><span class="line">- RandomAccess只是一个表示，并不是说ArrayList实现了RandomAcce接口才有了快速随机访问的功能。</span><br><span class="line"></span><br><span class="line">#### ArrayList 的扩容机制</span><br><span class="line"></span><br><span class="line">- ArrayList底层是一个动态数组，初始容量是10，当然也可以在初始化的时候指定长度。随着`add`函数的调用，当元素大于初始容量时，就会触发自动扩容机制，创建一个新数组，其长度为初始长度的1.5倍。然后用Arrays.copyOf方法将原先数组元素拷贝到新的数组里，然后再向新数组添加元素。</span><br><span class="line"></span><br><span class="line">#### hashmap和hashtable的区别</span><br><span class="line"></span><br><span class="line">![image-20230411230837320](C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411230837320.png)</span><br><span class="line"></span><br><span class="line">#### HashMap</span><br><span class="line"></span><br><span class="line">- **JDK1.8 之前 **</span><br><span class="line"></span><br><span class="line">  - 之前 HashMap 底层是 数组和链表 结合在⼀起使⽤也就是 链表散列。HashMap 通过 key 的 hashcode 经过扰动函数处理过后得到 hash 值，然后通过 (n - 1) &amp; hash 判断当前元素存放的位 置（这⾥的 n 指的是数组的⻓度），如果当前位置存在元素的话，就判断该元素与要存⼊的元素的 hash 值以及 key 是否相同，如果相同的话，直接覆盖，不相同就通过拉链法解决冲突。 </span><br><span class="line">  - 所谓扰动函数指的就是 HashMap 的 hash ⽅法。使⽤ hash ⽅法也就是扰动函数是为了防⽌⼀些 实现⽐j较差的 hashCode() ⽅法 换句话说使⽤扰动函数之后可以减少碰撞。</span><br><span class="line"></span><br><span class="line">- **1.8**:</span><br><span class="line"></span><br><span class="line">  - 出现冲突的时候进行二次哈希的时候</span><br><span class="line"></span><br><span class="line">  ```java</span><br><span class="line">  return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16)</span><br></pre></td></tr></table></figure>
+
+这里右移16位，是让高位参与运算，让计算出的哈希值更加均匀，减少哈希冲突。
+
+- 产生哈希冲突的时候，使用拉链法：
+  - 所谓 “拉链法” 就是：将链表和数组相结合。也就是说创建⼀个链表数组，数组中每⼀格就是⼀个链 表。若遇到哈希冲突，则将冲突的值加到链表中即可
+- 相⽐于之前的版本， JDK1.8 之后在解决哈希冲突时有了᫾⼤的变化，当链表⻓度⼤于阈值（默认为 8）（将链表转换成红⿊树前会判断，如果当前数组的⻓度⼩于 64，那么会选择先进⾏数组扩容，⽽ 不是转换为红⿊树）时，将链表转化为红⿊树，以减少搜索时间
+
+#### HashMap的PUT方法的具体流程
+
+- 当我们put的时候，首先计算 key的hash值，这里调用了 hash方法，hash方法实际是让key.hashCode()与key.hashCode()&gt;&gt;&gt;16进行异或操作，高16bit补0，一个数和0异或不变，所以 hash 函数大概的作用就是：高16bit不变，低16bit和高16bit做了一个异或，目的是减少碰撞。按照函数注释，因为bucket数组大小是2的幂，计算下标index = (table.length - 1) &amp; hash，如果不做 hash 处理，相当于散列生效的只有几个低 bit 位，为了减少散列的碰撞，设计者综合考虑了速度、作用、质量之后，使用高16bit和低16bit异或来简单处理减少碰撞，而且JDK8中用了复杂度 O（logn）的树结构来提升碰撞下的性能。
+  ![image-20230326195156579](C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230326195156579.png)
+
+#### HashMap 的 get 方法的执行过程？
+
+1. 首先，根据键的哈希值计算该键在哈希表中的位置，即通过哈希函数将键转化为一个数组下标。
+2. 然后，从哈希表中的该位置开始，遍历该位置上的链表或红黑树，查找与该键相等的元素。
+3. 如果找到了与该键相等的元素，则返回该元素对应的值。
+4. 如果没有找到与该键相等的元素，则返回null。
+
+#### Hashmap resize（）
+
+1. 首先，创建一个新的数组，长度是当前数组长度的两倍。
+2. 然后，遍历原数组中的每个元素，将元素重新分配到新数组中的位置上。具体来说，对于每个元素，计算该元素在新数组中的位置，然后将该元素插入到新数组中的对应位置上。如果原数组中某个位置上有多个元素，那么在新数组中这些元素仍然保持原来的顺序。
+3. 最后，将哈希表的数组指针指向新的数组，并更新哈希表的阈值和负载因子。
+
+在执行resize方法时，需要注意以下几点：
+
+1. 在重新分配元素时，由于哈希表中的元素数量可能很大，因此不能一次性将所有元素都复制到新数组中。通常采用逐个遍历原数组的方式，将元素一个一个地插入到新数组中，这个过程可能比较耗时。
+2. 在插入元素时，由于可能会有多个线程同时访问哈希表，因此需要考虑并发更新哈希表的问题。通常采用锁或CAS操作等机制来保证线程安全。
+3. 在扩容时，需要重新计算元素在新数组中的位置。这个过程通常采用与运算（hash &amp; (newCapacity - 1)）的方式来计算，因为哈希表长度总是2的幂次方，这样计算出的结果会比较快，且结果是等价的。
+</code></pre>
+</li>
+</ul>
+<h4 id="HashMap-的-size-为什么必须是-2-的整数次方？"><a href="#HashMap-的-size-为什么必须是-2-的整数次方？" class="headerlink" title="HashMap 的 size 为什么必须是 2 的整数次方？"></a>HashMap 的 size 为什么必须是 2 的整数次方？</h4><p>为了能让 HashMap 存取⾼效，尽量减少碰撞，也就是要尽量把数据分配均匀。我们上⾯也讲到了过 了，Hash 值的范围值-2147483648 到 2147483647，前后加起来⼤概 40 亿的映射空间，只要哈希 函数映射得⽐᫾均匀松散，⼀般应⽤是很难出现碰撞的。但问题是⼀个 40 亿⻓度的数组，内存是放 不下的。所以这个散列值是不能直接拿来⽤的。⽤之前还要先做对数组的⻓度取模运算，得到的余数 才能⽤来要存放的位置也就是对应的数组下标。这个数组下标的计算⽅法是“ (n - 1) &amp; hash ”。（n 代表数组⻓度）。这也就解释了 HashMap 的⻓度为什么是 2 的幂次⽅。</p>
+<ul>
+<li>采用二进制位操作 &amp;，相对于%能够提高运算效率，</li>
+<li>取余(%)操作中如果除数是2的幂次则等价于与其除数减一的与(&amp;)操作（也就是说 hash%length&#x3D;&#x3D;hash&amp;(length-1)的前提是 length 是2的 n 次方；</li>
+</ul>
+<h4 id="HashMap-的-get-方法能否判断某个元素是否在-map-中？"><a href="#HashMap-的-get-方法能否判断某个元素是否在-map-中？" class="headerlink" title="HashMap 的 get 方法能否判断某个元素是否在 map 中？"></a>HashMap 的 get 方法能否判断某个元素是否在 map 中？</h4><ul>
+<li><p>HashMap的get方法不能直接判断某个元素是否在map中，因为get方法只能根据键获取对应的值，无法判断键是否存在。但是，在get方法返回null时，可以推断出对应的键不存在于map中。</p>
+</li>
+<li><p>具体地，当使用get方法根据键获取值时，如果返回null，则可以推断出该键不存在于map中。但是，如果值为null并不代表该键不存在于map中，因为在map中，null值也是一个合法的值。因此，如果需要判断某个元素是否在map中，应该使用containsKey方法，该方法用于判断map中是否包含某个键。</p>
+</li>
+</ul>
+<h4 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230326211750104.png" alt="image-20230326211750104"></p>
+<h5 id="java1-8"><a href="#java1-8" class="headerlink" title="java1.8"></a>java1.8</h5><ul>
+<li>在JDK1.8中，放弃了Segment臃肿的设计，取而代之的是采用&#x3D;&#x3D;Node + CAS + Synchronized&#x3D;&#x3D;来保证并发安全进行实现，synchronized只锁定当前链表或红黑二叉树的首节点，这样只要hash不冲突，就不会产生并发，效率又提升N倍。</li>
+<li><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230326211835575.png" alt="image-20230326211835575"></li>
+<li>插入元素过程（建议去看看源码）：<ul>
+<li>如果相应位置的Node还没有初始化，则调用CAS插入相应的数据；</li>
+<li>如果相应位置的Node不为空，且当前该节点不处于移动状态，则对该节点加synchronized锁，如 果该节点的hash不小于0，则遍历链表更新节点或插入新节点<ul>
+<li>如果该节点是TreeBin类型的节点，说明是红黑树结构，则通过putTreeVal方法往红黑树中插入节 点；如果binCount不为0，说明put操作对数据产生了影响，如果当前链表的个数达到8个，则通 过treeifyBin方法转化为红黑树，如果oldVal不为空，说明是一次更新操作，没有对元素个数产生 影响，则直接返回旧值； </li>
+<li>如果插入的是一个新节点，则执行addCount()方法尝试更新元素个数baseCount；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="concurrenthashmap-put-和-get操作流程"><a href="#concurrenthashmap-put-和-get操作流程" class="headerlink" title="concurrenthashmap put 和 get操作流程"></a>concurrenthashmap put 和 get操作流程</h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4aaf1a44ac82">源码</a></p>
+</li>
+<li><pre><code class="Java">public V put(K key, V value) &#123;
+        return putVal(key, value, false);
+    &#125;
+
+    final V putVal(K key, V value, boolean onlyIfAbsent) &#123;
+        //key、value均不能为null
+        if (key == null || value == null) throw new NullPointerException();
+        //计算hash值
+        int hash = spread(key.hashCode());
+        int binCount = 0;
+        for (Node&lt;K,V&gt;[] tab = table;;) &#123;
+            Node&lt;K,V&gt; f; int n, i, fh;
+            // table为null，进行初始化工作
+            if (tab == null || (n = tab.length) == 0)
+                tab = initTable();
+            //如果i位置没有节点，则直接插入，不需要加锁
+            else if ((f = tabAt(tab, i = (n - 1) &amp; hash)) == null) &#123;
+                if (casTabAt(tab, i, null,
+                        new Node&lt;K,V&gt;(hash, key, value, null)))
+                    break;                   // no lock when adding to empty bin
+            &#125;
+            // 有线程正在进行扩容操作，则先帮助扩容
+            else if ((fh = f.hash) == MOVED)
+                tab = helpTransfer(tab, f);
+            else &#123;
+                V oldVal = null;
+                //对该节点进行加锁处理（hash值相同的链表的头节点），对性能有点儿影响
+                synchronized (f) &#123;
+                    if (tabAt(tab, i) == f) &#123;
+                        //fh &gt; 0 表示为链表，将该节点插入到链表尾部
+                        if (fh &gt;= 0) &#123;
+                            binCount = 1;
+                            for (Node&lt;K,V&gt; e = f;; ++binCount) &#123;
+                                K ek;
+                                //hash 和 key 都一样，替换value
+                                if (e.hash == hash &amp;&amp;
+                                        ((ek = e.key) == key ||
+                                                (ek != null &amp;&amp; key.equals(ek)))) &#123;
+                                    oldVal = e.val;
+                                    //putIfAbsent()
+                                    if (!onlyIfAbsent)
+                                        e.val = value;
+                                    break;
+                                &#125;
+                                Node&lt;K,V&gt; pred = e;
+                                //链表尾部  直接插入
+                                if ((e = e.next) == null) &#123;
+                                    pred.next = new Node&lt;K,V&gt;(hash, key,
+                                            value, null);
+                                    break;
+                                &#125;
+                            &#125;
+                        &#125;
+                        //树节点，按照树的插入操作进行插入
+                        else if (f instanceof TreeBin) &#123;
+                            Node&lt;K,V&gt; p;
+                            binCount = 2;
+                            if ((p = ((TreeBin&lt;K,V&gt;)f).putTreeVal(hash, key,
+                                    value)) != null) &#123;
+                                oldVal = p.val;
+                                if (!onlyIfAbsent)
+                                    p.val = value;
+                            &#125;
+                        &#125;
+                    &#125;
+                &#125;
+                if (binCount != 0) &#123;
+                    // 如果链表长度已经达到临界值8 就需要把链表转换为树结构
+                    if (binCount &gt;= TREEIFY_THRESHOLD)
+                        treeifyBin(tab, i);
+                    if (oldVal != null)
+                        return oldVal;
+                    break;
+                &#125;
+            &#125;
+        &#125;
+
+        //size + 1  
+        addCount(1L, binCount);
+        return null;
+    &#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- ![image-20230411234431868](C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411234431868.png)</span><br><span class="line"></span><br><span class="line">- </span><br><span class="line"></span><br><span class="line">- ```Java</span><br><span class="line">  public V get(Object key) &#123;</span><br><span class="line">          Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; e, p; int n, eh; K ek;</span><br><span class="line">          // 计算hash</span><br><span class="line">          int h = spread(key.hashCode());</span><br><span class="line">          if ((tab = table) != null &amp;&amp; (n = tab.length) &gt; 0 &amp;&amp;</span><br><span class="line">                  (e = tabAt(tab, (n - 1) &amp; h)) != null) &#123;</span><br><span class="line">              // 搜索到的节点key与传入的key相同且不为null,直接返回这个节点</span><br><span class="line">              if ((eh = e.hash) == h) &#123;</span><br><span class="line">                  if ((ek = e.key) == key || (ek != null &amp;&amp; key.equals(ek)))</span><br><span class="line">                      return e.val;</span><br><span class="line">              &#125;</span><br><span class="line">              // 树</span><br><span class="line">              else if (eh &lt; 0)</span><br><span class="line">                  return (p = e.find(h, key)) != null ? p.val : null;</span><br><span class="line">              // 链表，遍历</span><br><span class="line">              while ((e = e.next) != null) &#123;</span><br><span class="line">                  if (e.hash == h &amp;&amp;</span><br><span class="line">                          ((ek = e.key) == key || (ek != null &amp;&amp; key.equals(ek))))</span><br><span class="line">                      return e.val;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          return null;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<h3 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h3><h4 id="JVM的主要组成部分"><a href="#JVM的主要组成部分" class="headerlink" title="JVM的主要组成部分"></a>JVM的主要组成部分</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230328200057047.png" alt="image-20230328200057047"></p>
+<ul>
+<li>Class loader(类装载)： 根据给定的全限定名类名(如：java.lang.Object)来装载class文件 到运行时数据区的方法区中。 </li>
+<li>Execution engine（执行引擎）：执行class的指令。 </li>
+<li>Native Interface(本地接口)： 与native lib交互，是其它编程语言交互的接口。 </li>
+<li>Runtime data area(运行时数据区域)：即我们常说的JVM的内存</li>
+</ul>
+<h4 id="运行时数据区"><a href="#运行时数据区" class="headerlink" title="运行时数据区"></a>运行时数据区</h4><ul>
+<li><p>线程独占:栈,本地方法栈,程序计数器</p>
+</li>
+<li><p>线程共享:堆,方法区</p>
+</li>
+<li><p>虚拟机栈：</p>
+<ul>
+<li>栈绝对算的上是 JVM 运行时数据区域的一个核心，除了一些 Native 方法调用是通过本地方法栈实现的(后面会提到)，其他所有的 Java 方法调用都是通过栈来实现的（也需要和其他运行时数据区域比如程序计数器配合）。</li>
+<li>方法调用的数据需要通过栈进行传递，每一次方法调用都会有一个对应的栈帧被压入栈中，每一个方法调用结束后，都会有一个栈帧被弹出。</li>
+<li>栈由一个个栈帧组成，而每个栈帧中都拥有：局部变量表、操作数栈、动态链接、方法返回地址。和数据结构上的栈类似，两者都是先进后出的数据结构，只支持出栈和入栈两种操作。</li>
+</ul>
+</li>
+<li><p>本地方法栈：</p>
+<ul>
+<li>与栈类似,也是用来保存执行方法的信息.执行Java方法是使用栈,执行Native方法时使用本地方法栈</li>
+</ul>
+</li>
+<li><p>程序计数器：</p>
+<ul>
+<li>保存着当前线程执行的字节码位置,每个线程工作时都有独立的计数器,只为执行Java方法服务,执行 Native方法时,程序计数器为空</li>
+</ul>
+</li>
+<li><p>堆：</p>
+<ul>
+<li>Java 虚拟机所管理的内存中最大的一块，Java 堆是所有线程共享的一块内存区域，在虚拟机启动时创建。<strong>此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例以及数组都在这里分配内存。</strong></li>
+<li>Java 堆是垃圾收集器管理的主要区域，因此也被称作 <strong>GC 堆（Garbage Collected Heap）</strong></li>
+<li>在 JDK 7 版本及 JDK 7 版本之前，堆内存被通常分为下面三部分：<ol>
+<li>新生代内存(Young Generation)</li>
+<li>老生代(Old Generation)</li>
+<li>永久代(Permanent Generation)</li>
+</ol>
+</li>
+<li><strong>JDK 8 版本之后 PermGen(永久) 已被 Metaspace(元空间) 取代，元空间使用的是本地内存。</strong></li>
+<li>大部分情况，对象都会首先在 Eden 区域分配，在一次新生代垃圾回收后，如果对象还存活，则会进入 S0 或者 S1，并且对象的年龄还会加 1(Eden 区-&gt;Survivor 区后对象的初始年龄变为 1)，当它的年龄增加到一定程度（默认为 15 岁），就会被晋升到老年代中。对象晋升到老年代的年龄阈值，可以通过参数 <code>-XX:MaxTenuringThreshold</code> 来设置。</li>
+</ul>
+</li>
+<li><p>方法区：</p>
+<ul>
+<li><p>方法区属于是 JVM 运行时数据区域的一块逻辑区域，是各个线程共享的内存区域。</p>
+<p>《Java 虚拟机规范》只是规定了有方法区这么个概念和它的作用，方法区到底要如何实现那就是虚拟机自己要考虑的事情了。也就是说，在不同的虚拟机实现上，方法区的实现是不同的。</p>
+<p>当虚拟机要使用一个类时，它需要读取并解析 Class 文件获取相关信息，再将信息存入到方法区。方法区会存储已被虚拟机加载的 类信息、字段信息、方法信息、常量、静态变量、即时编译器编译后的代码缓存等数据</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="堆空间的基本结构"><a href="#堆空间的基本结构" class="headerlink" title="堆空间的基本结构"></a>堆空间的基本结构</h4><ul>
+<li>堆是垃圾收集器管理的主要区域，也被称作<strong>GC</strong>堆</li>
+<li>JDK7及之前：<ul>
+<li>新生代内存（Eden，两个Survivor区）</li>
+<li>老生代内存</li>
+<li>永久代</li>
+</ul>
+</li>
+<li>JDK8：<ul>
+<li>新生代内存（Eden，两个Survivor区）</li>
+<li>老生代内存</li>
+<li>MetaSpace</li>
+</ul>
+</li>
+</ul>
+<h4 id="内存分配和回收原则："><a href="#内存分配和回收原则：" class="headerlink" title="内存分配和回收原则："></a>内存分配和回收原则：</h4><ul>
+<li>优先在eden区分配<ul>
+<li>没有足够空间，发起Minor GC：<ul>
+<li>是否能存入Survivor空间</li>
+<li>分配担保机制，存入老年代</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>大对象之间进入老年代<ul>
+<li>为了避免大对象分配内存时由于<strong>分配担保机制</strong>的复制而降低效率</li>
+<li>分配担保机制：确定老年代本身还有容纳新生代所有对象的剩余空间</li>
+</ul>
+</li>
+<li>长期存活对象进入老年代：<ul>
+<li>每个对象都有一个年龄计数器</li>
+<li>在新生代中没熬过一次Minor GC就加一</li>
+<li>默认加到15岁就进入老年代</li>
+<li>相关参数：<code>-XX:MaxTenuringThreshold</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="GC的两大类："><a href="#GC的两大类：" class="headerlink" title="GC的两大类："></a>GC的两大类：</h4><ul>
+<li>Partial GC：并不收集整个GC堆<ul>
+<li>Young GC&#x2F;Minor GC：只收集新生代<ul>
+<li>Eden区满的时候触发</li>
+<li>如果young gc中有部分存活对象会晋升Old GC，因此一般会导致老年区占用量增加</li>
+</ul>
+</li>
+<li>Old GC：只有CMS的concurrent collection是这个模式</li>
+<li>Mixed GC：收集整个新生代和部分老生代。只有G1是这个模式</li>
+</ul>
+</li>
+<li>Full GC：收集整个堆<ul>
+<li>触发Young GC时，如果Young GC的平均晋升率大于老年区剩余空间，就触发Full GC</li>
+</ul>
+</li>
+</ul>
+<h4 id="死亡对象的判断方法"><a href="#死亡对象的判断方法" class="headerlink" title="死亡对象的判断方法"></a>死亡对象的判断方法</h4><ul>
+<li>引用计数法<ul>
+<li>给对象添加一个引用计数器，有地方引用他就加一</li>
+<li>当引用失效，计数器减一</li>
+<li>任何时候计数器为0的对象就是比不可能再被使用的</li>
+<li>问题：<strong>当两个对象只有互相引用时，外加没有引用这两个对象任意一个时，本来无用的两个对象就会一直不被回收</strong></li>
+</ul>
+</li>
+<li>可达性分析法<ul>
+<li>通过一系列的称为 <strong>“GC Roots”</strong> 的对象作为起点，从这些节点开始向下搜索，节点所走过的路径称为引用链，当一个对象到 GC Roots 没有任何引用链相连的话，则证明此对象是不可用的，需要被回收</li>
+<li>哪些对象可以被称为<strong>GC Roots</strong>：<ul>
+<li>虚拟机栈中的引用对象</li>
+<li>本地方法栈中的引用对象</li>
+<li>方法区中类静态属性引用对象</li>
+<li>方法区中常量引用的对象</li>
+<li>所有被同步锁持有对象</li>
+</ul>
+</li>
+<li>对于在可达性分析中不可达的对象，也不一定就被立即回收<ul>
+<li>可达性分析法中不可达的对象被第一次标记并且进行一次筛选，筛选的条件是此对象是否有必要执行 <code>finalize</code> 方法。当对象没有覆盖 <code>finalize</code> 方法，或 <code>finalize</code> 方法已经被虚拟机调用过时，虚拟机将这两种情况视为没有必要执行</li>
+<li>被判定为需要执行的对象将会被放在一个队列中进行第二次标记，除非这个对象与引用链上的任何一个对象建立关联，否则就会被真的回收。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="引用类型的总结"><a href="#引用类型的总结" class="headerlink" title="引用类型的总结"></a>引用类型的总结</h4><ul>
+<li><p>强引用：</p>
+<ul>
+<li>以前我们使用的大部分引用实际上都是强引用，这是使用最普遍的引用。如果一个对象具有强引用，那就类似于<strong>必不可少的生活用品</strong>，垃圾回收器绝不会回收它。当内存空间不足，Java 虚拟机宁愿抛出 OutOfMemoryError 错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足问题</li>
+</ul>
+</li>
+<li><p>软引用（SoftReference）</p>
+<ul>
+<li><p>如果一个对象只具有软引用，那就类似于<strong>可有可无的生活用品</strong>。如果内存空间足够，垃圾回收器就不会回收它，如果内存空间不足了，就会回收这些对象的内存。只要垃圾回收器没有回收它，该对象就可以被程序使用。软引用可用来实现内存敏感的高速缓存。</p>
+<p>软引用可以和一个引用队列（ReferenceQueue）联合使用，如果软引用所引用的对象被垃圾回收，JAVA 虚拟机就会把这个软引用加入到与之关联的引用队列中。</p>
+</li>
+</ul>
+</li>
+<li><p>弱引用（WeakReference）</p>
+<ul>
+<li><p>如果一个对象只具有弱引用，那就类似于<strong>可有可无的生活用品</strong>。弱引用与软引用的区别在于：只具有弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存。不过，由于垃圾回收器是一个优先级很低的线程， 因此不一定会很快发现那些只具有弱引用的对象。</p>
+<p>弱引用可以和一个引用队列（ReferenceQueue）联合使用，如果弱引用所引用的对象被垃圾回收，Java 虚拟机就会把这个弱引用加入到与之关联的引用队列中。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>虚引用（PhantomReference）</strong></p>
+<ul>
+<li>“虚引用”顾名思义，就是形同虚设，与其他几种引用都不同，虚引用并不会决定对象的生命周期。如果一个对象仅持有虚引用，那么它就和没有任何引用一样，在任何时候都可能被垃圾回收</li>
+</ul>
+</li>
+</ul>
+<h4 id="判断废弃常量和无用类"><a href="#判断废弃常量和无用类" class="headerlink" title="判断废弃常量和无用类"></a>判断废弃常量和无用类</h4><ul>
+<li>废弃常量：<ul>
+<li>在常量池中没有被任何任何对象引用</li>
+</ul>
+</li>
+<li>无用类<ul>
+<li>该类的所有实例都被回收</li>
+<li>加载该类的<code>ClassLoader</code>已经被回收</li>
+<li>该类对应的<code>java.lang.Class</code>对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法</li>
+</ul>
+</li>
+</ul>
+<h4 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h4><ul>
+<li>标记-清除算法<ul>
+<li><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230329191841793.png" alt="image-20230329191841793"></li>
+</ul>
+</li>
+<li>标记-复制算法<ul>
+<li><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230329191924620.png" alt="image-20230329191924620"></li>
+</ul>
+</li>
+<li>标记-整理算法<ul>
+<li><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230329191946393.png" alt="image-20230329191946393"></li>
+</ul>
+</li>
+<li>分代收集算法<ul>
+<li>当前虚拟机的垃圾收集都采用分代收集算法，这种算法没有什么新的思想，只是根据对象存活周期的不同将内存分为几块。一般将 java 堆分为新生代和老年代，这样我们就可以根据各个年代的特点选择合适的垃圾收集算法。</li>
+<li><strong>比如在新生代中，每次收集都会有大量对象死去，所以可以选择”标记-复制“算法，只需要付出少量对象的复制成本就可以完成每次垃圾收集。而老年代的对象存活几率是比较高的，而且没有额外的空间对它进行分配担保，所以我们必须选择“标记-清除”或“标记-整理”算法进行垃圾收集。</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h4><ul>
+<li><strong>如果说收集算法是内存回收的方法论，那么垃圾收集器就是内存回收的具体实现。</strong></li>
+<li>Serial 收集器<ul>
+<li>它的 <strong>“单线程”</strong> 的意义不仅仅意味着它只会使用一条垃圾收集线程去完成垃圾收集工作，更重要的是它在进行垃圾收集工作的时候必须暂停其他所有的工作线程（ <strong>“Stop The World”</strong> ），直到它收集结束。</li>
+<li><strong>新生代采用标记-复制算法，老年代采用标记-整理算法。</strong></li>
+</ul>
+</li>
+<li>ParNew 收集器<ul>
+<li><strong>ParNew 收集器其实就是 Serial 收集器的多线程版本，除了使用多线程进行垃圾收集外，其余行为（控制参数、收集算法、回收策略等等）和 Serial 收集器完全一样。</strong></li>
+<li><strong>新生代采用标记-复制算法，老年代采用标记-整理算法。</strong></li>
+</ul>
+</li>
+<li>Parallel Scavenge 收集器<ul>
+<li><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230329193243150.png" alt="image-20230329193243150"></li>
+</ul>
+</li>
+<li><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230329193259840.png" alt="image-20230329193259840"></li>
+<li><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230329193308621.png" alt="image-20230329193308621"></li>
+</ul>
+<h4 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h4><p><strong><code>BootstrapClassLoader</code>(启动类加载器)</strong> ：最顶层的加载类，由 C++实现，通常表示为 null，并且没有父级，主要用来加载 JDK 内部的核心类库（ <code>%JAVA_HOME%/lib</code>目录下的 <code>rt.jar</code> 、<code>resources.jar</code> 、<code>charsets.jar</code>等 jar 包和类）以及被 <code>-Xbootclasspath</code>参数指定的路径下的所有类。</p>
+<p><strong><code>ExtensionClassLoader</code>(扩展类加载器)</strong> ：主要负责加载 <code>%JRE_HOME%/lib/ext</code> 目录下的 jar 包和类以及被 <code>java.ext.dirs</code> 系统变量所指定的路径下的所有类。</p>
+<p><strong><code>AppClassLoader</code>(应用程序类加载器)</strong> ：面向我们用户的加载器，负责加载当前应用 classpath 下的所有 jar 包和类。</p>
+<h4 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230329231132675.png" alt="image-20230329231132675"></p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230329231141648.png" alt="image-20230329231141648"></p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230329231210361.png" alt="image-20230329231210361"></p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230329231219247.png" alt="image-20230329231219247"></p>
+<h3 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h3><h4 id="什么是进程，什么是线程"><a href="#什么是进程，什么是线程" class="headerlink" title="什么是进程，什么是线程"></a>什么是进程，什么是线程</h4><ul>
+<li>进程是程序的一次执行过程，是系统运行程序的基本单位，因此进程是动态的。系统运行一个程序即是一个进程从创建，运行到消亡的过程。在 Java 中，当我们启动 main 函数时其实就是启动了一个 JVM 的进程，而 main 函数所在的线程就是这个进程中的一个线程，也称主线程。</li>
+<li>线程与进程相似，但线程是一个比进程更小的执行单位。一个进程在其执行的过程中可以产生多个线程。与进程不同的是同类的多个线程共享进程的<strong>堆</strong>和<strong>方法区</strong>资源，但每个线程有自己的<strong>程序计数器</strong>、<strong>虚拟机栈</strong>和<strong>本地方法栈</strong>，所以系统在产生一个线程，或是在各个线程之间作切换工作时，负担要比进程小得多，也正因为如此，线程也被称为轻量级进程。</li>
+<li>关系：一个进程中可以有多个线程，多个线程共享进程的<strong>堆</strong>和<strong>方法区 (JDK1.8 之后的元空间)**资源，但是每个线程有自己的**程序计数器**、</strong>虚拟机栈** 和 <strong>本地方法栈</strong>。</li>
+<li><strong>总结：</strong>线程是进程划分成的更小的运行单位。线程和进程最大的不同在于基本上各进程是独立的，而各线程则不一定，因为同一进程中的线程极有可能会相互影响。线程执行开销小，但不利于资源的管理和保护；而进程正相反。**</li>
+</ul>
+<h4 id="为什么要使用多线程"><a href="#为什么要使用多线程" class="headerlink" title="为什么要使用多线程"></a>为什么要使用多线程</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230330070644283.png" alt="image-20230330070644283"></p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230412143334510.png" alt="image-20230412143334510"></p>
+<h4 id="线程的生命周期和状态"><a href="#线程的生命周期和状态" class="headerlink" title="线程的生命周期和状态"></a>线程的生命周期和状态</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230330070859924.png" alt="image-20230330070859924"></p>
+<h4 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230330070918790.png" alt="image-20230330070918790"></p>
+<h4 id="线程死锁"><a href="#线程死锁" class="headerlink" title="线程死锁"></a>线程死锁</h4><ul>
+<li><p>线程死锁描述的是这样一种情况：多个线程同时被阻塞，它们中的一个或者全部都在等待某个资源被释放。由于线程被无限期地阻塞，因此程序不可能正常终止。</p>
+</li>
+<li><p>四大条件：</p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230412143443149.png" alt="image-20230412143443149"></p>
+</li>
+<li><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230330071004926.png" alt="image-20230330071004926"></p>
+</li>
+</ul>
+<h4 id="sleep和wait的区别"><a href="#sleep和wait的区别" class="headerlink" title="sleep和wait的区别"></a>sleep和wait的区别</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230330071031667.png" alt="image-20230330071031667"></p>
+<h4 id="Volatile"><a href="#Volatile" class="headerlink" title="Volatile"></a>Volatile</h4><ul>
+<li>在 Java 中，<code>volatile</code> 关键字可以保证变量的可见性，如果我们将变量声明为 <strong><code>volatile</code></strong> ，这就指示 JVM，这个变量是共享且不稳定的，每次使用它都到主存中进行读取。</li>
+<li>不保证原子性</li>
+</ul>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230412143700385.png" alt="image-20230412143700385"></p>
+<ul>
+<li><p>防止指令重排</p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230412143630296.png" alt="image-20230412143630296"></p>
+</li>
+</ul>
+<h4 id="乐观锁和悲观锁"><a href="#乐观锁和悲观锁" class="headerlink" title="乐观锁和悲观锁"></a>乐观锁和悲观锁</h4><ul>
+<li><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230330071139324.png" alt="image-20230330071139324"></li>
+<li>乐观锁存在的问题：<ul>
+<li>ABA：<img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230330071212990.png" alt="image-20230330071212990"></li>
+</ul>
+</li>
+</ul>
+<h4 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h4><p><a target="_blank" rel="noopener" href="https://javaguide.cn/java/concurrent/java-concurrent-questions-02.html#synchronized-%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8">https://javaguide.cn/java/concurrent/java-concurrent-questions-02.html#synchronized-%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8</a></p>
+<h4 id="ReetrantLock"><a href="#ReetrantLock" class="headerlink" title="ReetrantLock"></a>ReetrantLock</h4><ul>
+<li><p><code>ReentrantLock</code> 实现了 <code>Lock</code> 接口，是一个可重入且独占式的锁，和 <code>synchronized</code> 关键字类似。不过，<code>ReentrantLock</code> 更灵活、更强大，增加了轮询、超时、中断、公平锁和非公平锁等高级功能。</p>
+</li>
+<li><p>和synchronized的区别：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://javaguide.cn/java/concurrent/java-concurrent-questions-02.html#synchronized-%E5%92%8C-reentrantlock-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB">https://javaguide.cn/java/concurrent/java-concurrent-questions-02.html#synchronized-%E5%92%8C-reentrantlock-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h4><ul>
+<li>如果想实现每一个线程都有自己的专属本地变量，就用threadLocal</li>
+<li><strong><code>ThreadLocal</code>类主要解决的就是让每个线程绑定自己的值，可以将<code>ThreadLocal</code>类形象的比喻成存放数据的盒子，盒子中可以存储每个线程的私有数据。</strong></li>
+</ul>
+<h4 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h4><ul>
+<li><p>线程池就是管理一系列线程的资源池。当有任务要处理时，直接从线程池中获取线程来处理，处理完之后线程并不会立即被销毁，而是等待下一个任务。</p>
+</li>
+<li><p>池化技术想必大家已经屡见不鲜了，线程池、数据库连接池、Http 连接池等等都是对这个思想的应用。池化技术的思想主要是为了减少每次获取资源的消耗，提高对资源的利用率。</p>
+<p><strong>线程池</strong>提供了一种限制和管理资源（包括执行一个任务）的方式。 每个<strong>线程池</strong>还维护一些基本统计信息，例如已完成任务的数量。</p>
+<p>这里借用《Java 并发编程的艺术》提到的来说一下<strong>使用线程池的好处</strong>：</p>
+<ul>
+<li><strong>降低资源消耗</strong>。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。</li>
+<li><strong>提高响应速度</strong>。当任务到达时，任务可以不需要等到线程创建就能立即执行。</li>
+<li><strong>提高线程的可管理性</strong>。线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，使用线程池可以进行统一的分配，调优和监控。</li>
+</ul>
+</li>
+<li><p>工作原理：</p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230412211137960.png" alt="image-20230412211137960"></p>
+</li>
+<li><p>创建线程池的两种方式：</p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230412211012547.png" alt="image-20230412211012547"></p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230412211037455.png" alt="image-20230412211037455"></p>
+</li>
+<li><p>常见参数：</p>
+<ul>
+<li><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230330072722985.png" alt="image-20230330072722985"></li>
+</ul>
+</li>
+<li><p>饱和策略：</p>
+<ul>
+<li><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230330072742837.png" alt="image-20230330072742837"></li>
+</ul>
+</li>
+<li><p>阻塞队列</p>
+</li>
+</ul>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230412211725926.png" alt="image-20230412211725926"></p>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="三大范式"><a href="#三大范式" class="headerlink" title="三大范式"></a>三大范式</h4><p>数据库范式有 3 种：</p>
+<ul>
+<li>1NF(第一范式)：属性不可再分。</li>
+<li>2NF(第二范式)：1NF 的基础之上，消除了非主属性对于码的部分函数依赖。</li>
+<li>3NF(第三范式)：3NF 在 2NF 的基础之上，消除了非主属性对于码的传递函数依赖 。</li>
+</ul>
+<h4 id="drop、delete、truncate的区别"><a href="#drop、delete、truncate的区别" class="headerlink" title="drop、delete、truncate的区别"></a>drop、delete、truncate的区别</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411213059246.png" alt="image-20230411213059246"></p>
+<h4 id="引擎"><a href="#引擎" class="headerlink" title="引擎"></a>引擎</h4><p>存储引擎Storage engine：MySQL中的数据、索引以及其他对象是如何存储的，是一套文件系统的实现。</p>
+<p>用的存储引擎有以下：</p>
+<p>Innodb引擎：Innodb引擎提供了对数据库ACID事务的支持。并且还提供了行级锁和外键的约束。它的设计的目标就是处理大数据容量的数据库系统。<br>MyIASM引擎(原本Mysql的默认引擎)：不提供事务的支持，也不支持行级锁和外键。<br>MEMORY引擎：所有的数据都在内存中，数据的处理速度快，但是安全性不高。</p>
+<h4 id="MyISAM索引与InnoDB索引的区别？"><a href="#MyISAM索引与InnoDB索引的区别？" class="headerlink" title="MyISAM索引与InnoDB索引的区别？"></a>MyISAM索引与InnoDB索引的区别？</h4><p>InnoDB索引是聚簇索引，MyISAM索引是非聚簇索引。<br>InnoDB的主键索引的叶子节点存储着行数据，因此主键索引非常高效。<br>MyISAM索引的叶子节点存储的是行数据地址，需要再寻址一次才能得到数据。<br>InnoDB非主键索引的叶子节点存储的是主键和其他带索引的列数据，因此查询时做到覆盖索引会非常高效。</p>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><h4 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h4><p>帮助存储引擎快速获取数据的一种数据结构，形象的说就是<strong>索引是数据的目录</strong>。</p>
+<p>索引是一种特殊的文件(InnoDB数据表上的索引是表空间的一个组成部分)，它们包含着对数据表里所有记录的引用指针。</p>
+<p>索引是一种数据结构。数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用B树及其变种B+树。</p>
+<p>更通俗的说，索引就相当于目录。为了方便查找书中的内容，通过对内容建立索引形成目录。索引是一个文件，它是要占据物理空间的。</p>
+<h4 id="索引应用场景"><a href="#索引应用场景" class="headerlink" title="索引应用场景"></a>索引应用场景</h4><ul>
+<li>where</li>
+<li>order by</li>
+<li>join</li>
+</ul>
+<h4 id="索引有哪几种类型"><a href="#索引有哪几种类型" class="headerlink" title="索引有哪几种类型"></a>索引有哪几种类型</h4><ul>
+<li>按数据结构分：<ul>
+<li>b+树索引<ul>
+<li>n棵子tree的节点包含n个关键字，不用来保存数据而是保存数据的索引。</li>
+<li>所有的叶子结点中包含了全部关键字的信息，及指向含这些关键字记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。</li>
+<li>所有的非终端结点可以看成是索引部分，结点中仅含其子树中的最大（或最小）关键字。</li>
+<li>B+ 树中，数据对象的插入和删除仅在叶节点上进行。</li>
+<li>B+树有2个头指针，一个是树的根节点，一个是最小关键码的叶节点。</li>
+</ul>
+</li>
+<li>b树索引</li>
+<li>hash索引<ul>
+<li>和hashmap一样：出现哈希碰撞就存在对应hash键下的链表中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>按物理存储分：<ul>
+<li>主键索引</li>
+<li>二级索引</li>
+</ul>
+</li>
+<li>按字段特性分：<ul>
+<li>主键索引</li>
+<li>唯一索引</li>
+<li>普通索引</li>
+<li>全文索引</li>
+</ul>
+</li>
+</ul>
+<h4 id="索引基本原理"><a href="#索引基本原理" class="headerlink" title="索引基本原理"></a>索引基本原理</h4><p>索引用来快速地寻找那些具有特定值的记录。如果没有索引，一般来说执行查询时遍历整张表。</p>
+<ol>
+<li>索引的原理很简单，就是把无序的数据变成有序的查询</li>
+<li>把创建了索引的列的内容进行排序</li>
+<li>对排序结果生成倒排表</li>
+<li>在倒排表内容上拼上数据地址链</li>
+<li>在查询的时候，先拿到倒排表内容，再取出数据地址链，从而拿到具体数据</li>
+</ol>
+<h4 id="创建索引的原则（重中之重）"><a href="#创建索引的原则（重中之重）" class="headerlink" title="创建索引的原则（重中之重）"></a>创建索引的原则（重中之重）</h4><p>索引虽好，但也不是无限制的使用，最好符合一下几个原则</p>
+<p>1） 最左前缀匹配原则，组合索引非常重要的原则，mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止匹配，比如a &#x3D; 1 and b &#x3D; 2 and c &gt; 3 and d &#x3D; 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。<br>2）较频繁作为查询条件的字段才去创建索引<br>3）更新频繁字段不适合创建索引<br>4）若是不能有效区分数据的列不适合做索引列(如性别，男女未知，最多也就三种，区分度实在太低)<br>5）尽量的扩展索引，不要新建索引。比如表中已经有a的索引，现在要加(a,b)的索引，那么只需要修改原来的索引即可。<br>6）定义有外键的数据列一定要建立索引。<br>7）对于那些查询中很少涉及的列，重复值比较多的列不要建立索引。<br>8）对于定义为text、image和bit的数据类型的列不要建立索引。</p>
+<h4 id="什么是最左前缀原则？什么是最左匹配原则"><a href="#什么是最左前缀原则？什么是最左匹配原则" class="headerlink" title="什么是最左前缀原则？什么是最左匹配原则"></a>什么是最左前缀原则？什么是最左匹配原则</h4><p>顾名思义，就是最左优先，在创建多列索引时，要根据业务需求，where子句中使用最频繁的一列放在最左边。<br>最左前缀匹配原则，非常重要的原则，mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止匹配，比如a &#x3D; 1 and b &#x3D; 2 and c &gt; 3 and d &#x3D; 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。<br>&#x3D;和in可以乱序，比如a &#x3D; 1 and b &#x3D; 2 and c &#x3D; 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式</p>
+<h4 id="数据库为什么使用B-树而不是B树"><a href="#数据库为什么使用B-树而不是B树" class="headerlink" title="数据库为什么使用B+树而不是B树"></a>数据库为什么使用B+树而不是B树</h4><p>B树只适合随机检索，而B+树同时支持随机检索和顺序检索；<br>B+树空间利用率更高，可减少I&#x2F;O次数，磁盘读写代价更低。一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘I&#x2F;O消耗。B+树的内部结点并没有指向关键字具体信息的指针，只是作为索引使用，其内部结点比B树小，盘块能容纳的结点中关键字数量更多，一次性读入内存中可以查找的关键字也就越多，相对的，IO读写次数也就降低了。而IO读写次数是影响索引检索效率的最大因素；<br>B+树的查询效率更加稳定。B树搜索有可能会在非叶子结点结束，越靠近根节点的记录查找时间越短，只要找到关键字即可确定记录的存在，其性能等价于在关键字全集内做一次二分查找。而在B+树中，顺序检索比较明显，随机检索时，任何关键字的查找都必须走一条从根节点到叶节点的路，所有关键字的查找路径长度相同，导致每一个关键字的查询效率相当。<br>B-树在提高了磁盘IO性能的同时并没有解决元素遍历的效率低下的问题。B+树的叶子节点使用指针顺序连接在一起，只要遍历叶子节点就可以实现整棵树的遍历。而且在数据库中基于范围的查询是非常频繁的，而B树不支持这样的操作。<br>增删文件（节点）时，效率更高。因为B+树的叶子节点包含所有关键字，并以有序的链表结构存储，这样可很好提高增删效率。</p>
+<h4 id="什么是聚簇索引？何时使用聚簇索引与非聚簇索引"><a href="#什么是聚簇索引？何时使用聚簇索引与非聚簇索引" class="headerlink" title="什么是聚簇索引？何时使用聚簇索引与非聚簇索引"></a>什么是聚簇索引？何时使用聚簇索引与非聚簇索引</h4><p>聚簇索引：将数据存储与索引放到了一块，找到索引也就找到了数据<br>非聚簇索引：将数据存储于索引分开结构，索引结构的叶子节点指向了数据的对应行，myisam通过key_buffer把索引先缓存到内存中，当需要访问数据时（通过索引访问数据），在内存中直接搜索索引，然后通过索引找到磁盘相应数据，这也就是为什么索引不在key buffer命中时，速度慢的原因<br>&#x3D;&#x3D;InnoDB中只有主键索引是聚簇索引&#x3D;&#x3D;，唯一索引等都是非聚簇索引。<strong>B+树在满足聚簇索引和覆盖索引的时候不需要回表查询数据</strong></p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230325000836569.png" alt="image-20230325000836569"></p>
+<p><strong>注意，非聚簇索引不一定会进行回表查询，因为如果所需要的值正好命中索引，则不需要进行。</strong></p>
+<h4 id="索引的优化"><a href="#索引的优化" class="headerlink" title="索引的优化"></a>索引的优化</h4><p>常见优化索引的方法：</p>
+<ul>
+<li><p>前缀索引优化；</p>
+<ul>
+<li><p>使用前缀索引是为了减小索引字段大小，可以增加一个索引页中存储的索引值，有效提高索引的查询速度。在一些大字符串的字段作为索引时，使用前缀索引可以帮助我们减小索引项的大小。</p>
+<p>不过，前缀索引有一定的局限性，例如：</p>
+<ul>
+<li>order by 就无法使用前缀索引；</li>
+<li>无法把前缀索引用作覆盖索引；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>覆盖索引优化；</p>
+</li>
+<li><p>主键索引最好是自增的；</p>
+</li>
+<li><p>防止索引失效；</p>
+</li>
+</ul>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><h4 id="什么是事务"><a href="#什么是事务" class="headerlink" title="什么是事务"></a>什么是事务</h4><p>事务是一个不可分割的数据库操作序列，也是数据库并发控制的基本单位，其执行的结果必须使数据库从一种一致性状态变到另一种一致性状态。事务是逻辑上的一组操作，要么都执行，要么都不执行。</p>
+<p>事务最经典也经常被拿出来说例子就是转账了。</p>
+<h4 id="事务四大特性（ACID）"><a href="#事务四大特性（ACID）" class="headerlink" title="事务四大特性（ACID）"></a>事务四大特性（ACID）</h4><ul>
+<li>原子性： 事务是最小的执行单位，不允许分割。事务的原子性确保动作要么全部完成，要么完全不起作用；</li>
+<li>一致性： 执行事务前后，数据保持一致，多个事务对同一个数据读取的结果是相同的；</li>
+<li>隔离性： 并发访问数据库时，一个用户的事务不被其他事务所干扰，各并发事务之间数据库是独立的；</li>
+<li>持久性： 一个事务被提交之后。它对数据库中数据的改变是持久的，即使数据库发生故障也不应该对其有任何影响。</li>
+</ul>
+<h4 id="通过什么技术来保证事务的这四个特性的呢？"><a href="#通过什么技术来保证事务的这四个特性的呢？" class="headerlink" title="通过什么技术来保证事务的这四个特性的呢？"></a>通过什么技术来保证事务的这四个特性的呢？</h4><ul>
+<li>持久性是通过 redo log （重做日志）来保证的；</li>
+<li>原子性是通过 undo log（回滚日志） 来保证的；</li>
+<li><strong>隔离性是通过 MVCC（多版本并发控制） 或锁机制来保证的；</strong></li>
+<li>一致性则是通过持久性+原子性+隔离性来保证；</li>
+</ul>
+<h4 id="并发带来的问题"><a href="#并发带来的问题" class="headerlink" title="并发带来的问题"></a>并发带来的问题</h4><h5 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h5><p>某个事务已更新一份数据，另一个事务在此时读取了同一份数据，由于某些原因，前一个RollBack了操作，则后一个事务所读取的数据就会是不正确的。</p>
+<h5 id="不可重负读"><a href="#不可重负读" class="headerlink" title="不可重负读"></a>不可重负读</h5><p>在一个事务的两次查询之中数据不一致，这可能是两次查询过程中间插入了一个事务更新的原有的数据。</p>
+<h5 id="幻读"><a href="#幻读" class="headerlink" title="幻读"></a>幻读</h5><p>一个事务的两次查询中数据笔数不一致，例如有一个事务查询了几列(Row)数据，而另一个事务却在此时插入了新的几列数据，先前的事务在接下来的查询中，就会发现有几列数据是它先前所没有的。</p>
+<p>严重性：</p>
+<p>脏读&gt;不可重复读&gt;幻读</p>
+<h4 id="什么是事务的隔离级别？MySQL的默认隔离级别是什么？"><a href="#什么是事务的隔离级别？MySQL的默认隔离级别是什么？" class="headerlink" title="什么是事务的隔离级别？MySQL的默认隔离级别是什么？"></a>什么是事务的隔离级别？MySQL的默认隔离级别是什么？</h4><ul>
+<li><p>为了达到事务的四大特性，数据库定义了四种隔离级别</p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230325135806086.png" alt="image-20230325135806086"></p>
+</li>
+</ul>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230325135837502.png" alt="image-20230325135837502"></p>
+<p><strong>MySQL InnoDB 引擎的默认隔离级别虽然是「可重复读」，但是它很大程度上避免幻读现象</strong>，解决的方案有两种：</p>
+<ul>
+<li>针对<strong>快照读</strong>（普通 select 语句），是<strong>通过 MVCC 方式解决了幻读</strong>，因为可重复读隔离级别下，事务执行过程中看到的数据，一直跟这个事务启动时看到的数据是一致的，即使中途有其他事务插入了一条数据，是查询不出来这条数据的，所以就很好了避免幻读问题。</li>
+<li>针对<strong>当前读</strong>（select … for update 等语句），是<strong>通过 next-key lock（记录锁+间隙锁）方式解决了幻读</strong>，因为当执行 select … for update 语句的时候，会加上 next-key lock，如果有其他事务在 next-key lock 锁范围内插入了一条记录，那么这个插入语句就会被阻塞，无法成功插入，所以就很好了避免幻读问题。</li>
+</ul>
+<h4 id="MVCC是怎样工作的"><a href="#MVCC是怎样工作的" class="headerlink" title="MVCC是怎样工作的"></a>MVCC是怎样工作的</h4><h4 id="Read-View-在-MVCC-里如何工作的？"><a href="#Read-View-在-MVCC-里如何工作的？" class="headerlink" title="Read View 在 MVCC 里如何工作的？"></a>Read View 在 MVCC 里如何工作的？</h4><p>在 MySQL 中，<code>read_view</code> 是实现多版本并发控制 (MVCC) 机制的关键数据结构之一。</p>
+<p>我们需要了解两个知识：</p>
+<ul>
+<li>Read View 中四个字段作用；</li>
+<li>聚簇索引记录中两个跟事务有关的隐藏列；</li>
+</ul>
+<p>那 Read View 到底是个什么东西？</p>
+<p><img src="https://cdn.xiaolincoding.com/gh/xiaolincoder/ImageHost4@main/mysql/%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/readview%E7%BB%93%E6%9E%84.drawio.png" alt="img"></p>
+<p>Read View 有四个重要的字段：</p>
+<ul>
+<li>m_ids ：指的是在创建 Read View 时，当前数据库中「活跃事务」的<strong>事务 id 列表</strong>，注意是一个列表，<strong>“活跃事务”指的就是，启动了但还没提交的事务</strong>。</li>
+<li>min_trx_id ：指的是在创建 Read View 时，当前数据库中「活跃事务」中事务 <strong>id 最小的事务</strong>，也就是 m_ids 的最小值。</li>
+<li>max_trx_id ：这个并不是 m_ids 的最大值，而是<strong>创建 Read View 时当前数据库中应该给下一个事务的 id 值</strong>，也就是全局事务中最大的事务 id 值 + 1；</li>
+<li>creator_trx_id ：指的是<strong>创建该 Read View 的事务的事务 id</strong>。</li>
+</ul>
+<p>知道了 Read View 的字段，我们还需要了解聚簇索引记录中的两个隐藏列。</p>
+<p>假设在账户余额表插入一条小林余额为 100 万的记录，然后我把这两个隐藏列也画出来，该记录的整个示意图如下：</p>
+<p><img src="https://cdn.xiaolincoding.com//mysql/other/f595d13450878acd04affa82731f76c5.png" alt="图片"></p>
+<p>对于使用 InnoDB 存储引擎的数据库表，它的聚簇索引记录中都包含下面两个隐藏列：</p>
+<ul>
+<li>trx_id，当一个事务对某条聚簇索引记录进行改动时，就会<strong>把该事务的事务 id 记录在 trx_id 隐藏列里</strong>；</li>
+<li>roll_pointer，每次对某条聚簇索引记录进行改动时，都会把旧版本的记录写入到 undo 日志中，然后<strong>这个隐藏列是个指针，指向每一个旧版本记录</strong>，于是就可以通过它找到修改前的记录。</li>
+</ul>
+<p>在创建 Read View 后，我们可以将记录中的 trx_id 划分这三种情况：</p>
+<p><img src="https://cdn.xiaolincoding.com/gh/xiaolincoder/ImageHost4@main/mysql/%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/ReadView.drawio.png" alt="img"></p>
+<p>一个事务去访问记录的时候，除了自己的更新记录总是可见之外，还有这几种情况：</p>
+<ul>
+<li>如果记录的 trx_id 值小于 Read View 中的 <code>min_trx_id</code> 值，表示这个版本的记录是在创建 Read View <strong>前</strong>已经提交的事务生成的，所以该版本的记录对当前事务<strong>可见</strong>。</li>
+<li>如果记录的 trx_id 值大于等于 Read View 中的 <code>max_trx_id</code> 值，表示这个版本的记录是在创建 Read View <strong>后</strong>才启动的事务生成的，所以该版本的记录对当前事务<strong>不可见</strong>。</li>
+<li>如果记录的 trx_id 值在 Read View 的<code>min_trx_id</code>和<code>max_trx_id</code>之间，需要判断 trx_id 是否在 m_ids 列表中：<ul>
+<li>如果记录的 trx_id <strong>在</strong> <code>m_ids</code> 列表中，表示生成该版本记录的活跃事务依然活跃着（还没提交事务），所以该版本的记录对当前事务<strong>不可见</strong>。</li>
+<li>如果记录的 trx_id <strong>不在</strong> <code>m_ids</code>列表中，表示生成该版本记录的活跃事务已经被提交，所以该版本的记录对当前事务<strong>可见</strong>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>这种通过「版本链」来控制并发事务访问同一个记录时的行为就叫 MVCC（多版本并发控制）。</strong></p>
+<h4 id="可重复读是如何工作的？"><a href="#可重复读是如何工作的？" class="headerlink" title="可重复读是如何工作的？"></a>可重复读是如何工作的？</h4><p><strong>可重复读隔离级别是启动事务时生成一个 Read View，然后整个事务期间都在用这个 Read View</strong>。</p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230410165952850.png" alt="image-20230410165952850"></p>
+<h4 id="读提交是如何工作的？"><a href="#读提交是如何工作的？" class="headerlink" title="读提交是如何工作的？"></a>读提交是如何工作的？</h4><p><strong>读提交隔离级别是在每次读取数据时，都会生成一个新的 Read View</strong>。</p>
+<h4 id="如何解决幻读"><a href="#如何解决幻读" class="headerlink" title="如何解决幻读"></a>如何解决幻读</h4><p><strong>使用MVCC+next-key-lock</strong></p>
+<p><code>InnoDB</code>存储引擎在 RR 级别下通过 <code>MVCC</code>和 <code>Next-key Lock</code> 来解决幻读问题：</p>
+<p><strong>1、执行普通 <code>select</code>，此时会以 <code>MVCC</code> 快照读的方式读取数据</strong></p>
+<p>在快照读的情况下，RR 隔离级别只会在事务开启后的第一次查询生成 <code>Read View</code> ，并使用至事务提交。所以在生成 <code>Read View</code> 之后其它事务所做的更新、插入记录版本对当前事务并不可见，实现了可重复读和防止快照读下的 “幻读”</p>
+<p><strong>2、执行 select…for update&#x2F;lock in share mode、insert、update、delete 等当前读</strong></p>
+<p>在当前读下，读取的都是最新的数据，如果其它事务有插入新的记录，并且刚好在当前事务查询范围内，就会产生幻读！<code>InnoDB</code> 使用 Next-key Lock 来防止这种情况。当执行当前读时，会锁定读取到的记录的同时，锁定它们的间隙，防止其它事务在查询范围内插入数据。只要我不让你插入，就不会发生幻读</p>
+<h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><h4 id="全局锁"><a href="#全局锁" class="headerlink" title="全局锁"></a>全局锁</h4><p>执行后，<strong>整个数据库就处于只读状态了</strong>，这时其他线程执行以下操作，都会被阻塞：</p>
+<ul>
+<li>对数据的增删改操作，比如 insert、delete、update等语句；</li>
+<li>对表结构的更改操作，比如 alter table、drop table 等语句。</li>
+</ul>
+<p>全局锁主要应用于做<strong>全库逻辑备份</strong>，这样在备份数据库期间，不会因为数据或表结构的更新，而出现备份文件的数据与预期的不一样。</p>
+<blockquote>
+<p>既然备份数据库数据的时候，使用全局锁会影响业务，那有什么其他方式可以避免？</p>
+</blockquote>
+<p>有的，如果数据库的引擎支持的事务支持<strong>可重复读的隔离级别</strong>，那么在备份数据库之前先开启事务，会先创建 Read View，然后整个事务执行期间都在用这个 Read View，而且由于 MVCC 的支持，备份期间业务依然可以对数据进行更新操作。</p>
+<h4 id="表级锁（待完善，小林coding）"><a href="#表级锁（待完善，小林coding）" class="headerlink" title="表级锁（待完善，小林coding）"></a>表级锁（待完善，小林coding）</h4><h4 id="行级锁"><a href="#行级锁" class="headerlink" title="行级锁"></a>行级锁</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230410180417355.png" alt="image-20230410180417355"></p>
+<p>行级锁的类型主要有三类：</p>
+<ul>
+<li>Record Lock，记录锁，也就是仅仅把一条记录锁上；</li>
+<li>Gap Lock，间隙锁，锁定一个范围，但是不包含记录本身；</li>
+<li>Next-Key Lock：Record Lock + Gap Lock 的组合，锁定一个范围，并且锁定记录本身。</li>
+</ul>
+<h4 id="从锁的类别上MySQL都有哪些锁呢？像上面进行锁定有点阻碍并发效率？"><a href="#从锁的类别上MySQL都有哪些锁呢？像上面进行锁定有点阻碍并发效率？" class="headerlink" title="从锁的类别上MySQL都有哪些锁呢？像上面进行锁定有点阻碍并发效率？"></a>从锁的类别上MySQL都有哪些锁呢？像上面进行锁定有点阻碍并发效率？</h4><p>从锁的类别上来讲，有共享锁和排他锁。</p>
+<p>共享锁: 又叫做读锁。 当用户要进行数据的读取时，对数据加上共享锁。共享锁可以同时加上多个。</p>
+<p>排他锁: 又叫做写锁。 当用户要进行数据的写入时，对数据加上排他锁。排他锁只可以加一个，他和其他的排他锁，共享锁都相斥。</p>
+<p>用上面的例子来说就是用户的行为有两种，一种是来看房，多个用户一起看房是可以接受的。 一种是真正的入住一晚，在这期间，无论是想入住的还是想看房的都不可以。</p>
+<p>锁的粒度取决于具体的存储引擎，InnoDB实现了行级锁，页级锁，表级锁。</p>
+<p>他们的加锁开销从大到小，并发能力也是从大到小。</p>
+<h4 id="MySQL中InnoDB引擎的行锁是怎么实现的？"><a href="#MySQL中InnoDB引擎的行锁是怎么实现的？" class="headerlink" title="MySQL中InnoDB引擎的行锁是怎么实现的？"></a>MySQL中InnoDB引擎的行锁是怎么实现的？</h4><p>答：InnoDB是基于索引来完成行锁</p>
+<p>例: select * from tab_with_index where id &#x3D; 1 for update;</p>
+<p>for update 可以根据条件来完成行锁锁定，并且 id 是有索引键的列，如果 id 不是索引键那么InnoDB将完成表锁，并发将无从谈起</p>
+<h4 id="InnoDB存储引擎的锁的算法有三种"><a href="#InnoDB存储引擎的锁的算法有三种" class="headerlink" title="InnoDB存储引擎的锁的算法有三种"></a>InnoDB存储引擎的锁的算法有三种</h4><ul>
+<li>Record lock：单个行记录上的锁</li>
+<li>Gap lock：间隙锁，锁定一个范围，不包括记录本身</li>
+<li>Next-key lock：record+gap 锁定一个范围，包含记录本身</li>
+</ul>
+<h4 id="数据库的乐观锁和悲观锁是什么？怎么实现的？"><a href="#数据库的乐观锁和悲观锁是什么？怎么实现的？" class="headerlink" title="数据库的乐观锁和悲观锁是什么？怎么实现的？"></a>数据库的乐观锁和悲观锁是什么？怎么实现的？</h4><p>数据库管理系统（DBMS）中的并发控制的任务是确保在多个事务同时存取数据库中同一数据时不破坏事务的隔离性和统一性以及数据库的统一性。乐观并发控制（乐观锁）和悲观并发控制（悲观锁）是并发控制主要采用的技术手段。</p>
+<p>悲观锁：假定会发生并发冲突，屏蔽一切可能违反数据完整性的操作。在查询完数据的时候就把事务锁起来，直到提交事务。实现方式：使用数据库中的锁机制</p>
+<p>乐观锁：假设不会发生并发冲突，只在提交操作时检查是否违反数据完整性。在修改数据的时候把事务锁起来，通过version的方式来进行锁定。实现方式：乐一般会使用版本号机制（trx_id）或CAS算法实现。</p>
+<p>&#x3D;&#x3D;两种锁的使用场景&#x3D;&#x3D;</p>
+<p>从上面对两种锁的介绍，我们知道两种锁各有优缺点，不可认为一种好于另一种，像乐观锁适用于写比较少的情况下（多读场景），即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。</p>
+<p>但如果是多写的情况，一般会经常产生冲突，这就会导致上层应用会不断的进行retry，这样反倒是降低了性能，所以一般多写的场景下用悲观锁就比较合适。</p>
+<h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><h4 id="undo-log、redo-log、binlog-有什么用？"><a href="#undo-log、redo-log、binlog-有什么用？" class="headerlink" title="undo log、redo log、binlog 有什么用？"></a>undo log、redo log、binlog 有什么用？</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411081606768.png" alt="image-20230411081606768"></p>
+<h4 id="undo-log"><a href="#undo-log" class="headerlink" title="undo log"></a>undo log</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411082220444.png" alt="image-20230411082220444"></p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411082317551.png" alt="image-20230411082317551"></p>
+<h4 id="redo-log"><a href="#redo-log" class="headerlink" title="redo log"></a>redo log</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411095440137.png" alt="image-20230411095440137"></p>
+<h4 id="binlog"><a href="#binlog" class="headerlink" title="binlog"></a>binlog</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411100013677.png" alt="image-20230411100013677"></p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411100024494.png" alt="image-20230411100024494"></p>
+<h4 id="主从复制的实现"><a href="#主从复制的实现" class="headerlink" title="主从复制的实现"></a>主从复制的实现</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411102309261.png" alt="image-20230411102309261"></p>
+<h2 id="计网"><a href="#计网" class="headerlink" title="计网"></a>计网</h2><h4 id="为什么是三次握手？两次不行？"><a href="#为什么是三次握手？两次不行？" class="headerlink" title="为什么是三次握手？两次不行？"></a>为什么是三次握手？两次不行？</h4><p>三次握手的本质是确认通信双方收发数据的能力</p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230327071906772.png" alt="image-20230327071906772"></p>
+<p>两次握手出现的问题：</p>
+<ul>
+<li><p>阻止历史链接</p>
+</li>
+<li><p>因为需要考虑连接时丢包的问题，如果只握手2次，第二次握手时如果服务端发给客户端的确认报文段丢失，此时服务端已经准备好了收发数(可以理解服务端已经连接成功)据，而客户端一直没收到服务端的确认报文，所以客户端就不知道服务端是否已经准备好了(可以理解为客户端未连接成功)，这种情况下客户端不会给服务端发数据，也会忽略服务端发过来的数据。</p>
+<p>如果是三次握手，即便发生丢包也不会有问题，比如如果第三次握手客户端发的确认ack报文丢失，服务端在一段时间内没有收到确认ack报文的话就会重新进行第二次握手，也就是服务端会重发SYN报文段，客户端收到重发的报文段后会再次给服务端发送确认ack报文。</p>
+</li>
+<li><p>资源浪费：</p>
+<ul>
+<li><p>如果只有「两次握手」，当客户端发生的 <code>SYN</code> 报文在网络中阻塞，客户端没有接收到 <code>ACK</code> 报文，就会重新发送 <code>SYN</code> ，<strong>由于没有第三次握手，服务端不清楚客户端是否收到了自己回复的 <code>ACK</code> 报文，所以服务端每收到一个 <code>SYN</code> 就只能先主动建立一个连接</strong>，这会造成什么情况呢？</p>
+<p>如果客户端发送的 <code>SYN</code> 报文在网络中阻塞了，重复发送多次 <code>SYN</code> 报文，那么服务端在收到请求后就会<strong>建立多个冗余的无效链接，造成不必要的资源浪费。</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="四次挥手？三次不行？"><a href="#四次挥手？三次不行？" class="headerlink" title="四次挥手？三次不行？"></a>四次挥手？三次不行？</h4><p>因为只有在客户端和服务端都没有数据要发送的时候才能断开TCP。而客户端发出FIN报文时只能保证客户端没有数据发了，服务端还有没有数据发客户端是不知道的。而服务端收到客户端的FIN报文后只能先回复客户端一个确认报文来告诉客户端我服务端已经收到你的FIN报文了，但我服务端还有一些数据没发完，等这些数据发完了服务端才能给客户端发FIN报文(所以不能一次性将确认报文和FIN报文发给客户端，就是这里多出来了一次)。</p>
+<ul>
+<li>某些情况三次挥手也是可以的，比如启用TCP延迟应答<ul>
+<li>TCP 延迟确认的策略：</li>
+<li>当有响应数据要发送时，ACK 会随着响应数据一起立刻发送给对方</li>
+<li>当没有响应数据要发送时，ACK 将会延迟一段时间，以等待是否有响应数据可以一起发送</li>
+<li>如果在延迟等待发送 ACK 期间，对方的第二个数据报文又到达了，这时就会立刻发送 ACK</li>
+</ul>
+</li>
+</ul>
+<h4 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别"></a>TCP和UDP的区别</h4><p>TCP：</p>
+<ol>
+<li>面向连接的，即发送数据之前需要先建立连接；</li>
+<li>传输可靠，会自动重传丢失的数据包，保证数据的正确性；</li>
+<li>传输速度较慢，因为需要进行多次握手、拆除等操作，有较多的开销；</li>
+<li>可以保证数据的顺序性，因为数据包是按照顺序发送和接收的；</li>
+<li>适合传输较大的数据，例如文件传输、HTTP请求等。</li>
+</ol>
+<p>UDP：</p>
+<ol>
+<li>无连接的，发送数据之前不需要建立连接；</li>
+<li>传输不可靠，不会重传丢失的数据包，不能保证数据的正确性；</li>
+<li>传输速度较快，因为没有建立连接的开销；</li>
+<li>不能保证数据的顺序性，因为数据包是以随机的顺序发送和接收的；</li>
+<li>适合传输实时性要求较高的数据，例如视频、音频等。</li>
+</ol>
+<p>综上所述，TCP更适合传输重要数据，确保数据的正确性和可靠性；UDP更适合实时性要求较高的数据，例如视频、音频等。</p>
+<h4 id="HTTP-1-0，HTTP-1-1-和-HTTP-2-0-是HTTP协议的三个主要版本。"><a href="#HTTP-1-0，HTTP-1-1-和-HTTP-2-0-是HTTP协议的三个主要版本。" class="headerlink" title="HTTP 1.0，HTTP 1.1 和 HTTP 2.0 是HTTP协议的三个主要版本。"></a>HTTP 1.0，HTTP 1.1 和 HTTP 2.0 是HTTP协议的三个主要版本。</h4><p>它们之间的主要区别如下：</p>
+<ol>
+<li>HTTP 1.0：HTTP&#x2F;1.0是HTTP协议的第一个正式版本，发布于1996年。它是一个简单的请求&#x2F;响应协议，每个请求只能得到一个响应。该版本使用单个TCP连接来处理一个请求&#x2F;响应周期，并且不支持持久连接。这意味着每个请求都需要在完成后关闭连接。</li>
+<li>HTTP 1.1：HTTP&#x2F;1.1是HTTP协议的一个重要更新，于1999年发布。它引入了许多新功能，如持久连接、管道化和分块传输编码。持久连接允许客户端和服务器在单个TCP连接上传输多个请求和响应。管道化允许客户端在收到之前将多个请求发送到服务器。分块传输编码允许服务器在不知道整个响应大小的情况下发送数据。</li>
+<li>HTTP 2.0：HTTP&#x2F;2是HTTP协议的最新版本，于2015年发布。它引入了许多新特性，如二进制协议、多路复用、服务器推送等。二进制协议使数据传输更加高效，并减少了头部开销。多路复用允许客户端和服务器在单个TCP连接上同时传输多个请求和响应。服务器推送允许服务器在请求之前主动向客户端发送响应。</li>
+</ol>
+<p>应用场景：</p>
+<ol>
+<li>HTTP 1.0：适用于简单的静态网站，因为它只支持单个请求&#x2F;响应周期，并且不支持持久连接。</li>
+<li>HTTP 1.1：适用于更复杂的动态网站，因为它引入了许多新功能，如持久连接、管道化和分块传输编码，可以更有效地处理多个请求和响应。</li>
+<li>HTTP 2.0：适用于需要高性能的现代Web应用程序，因为它引入了二进制协议、多路复用、服务器推送等新特性，可以更高效地处理大量请求和响应。</li>
+</ol>
+<h4 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h4><p>200：成功，Web 服务器成功处理了客户端的请求。 </p>
+<p>301：永久重定向，当客户端请求一个网址的时候，Web 服务器会将当前请求重定向到另一个 网址，搜索引擎会抓取重定向后网页的内容并且将旧的网址替换为重定向后的网址。 </p>
+<p>302：临时重定向，搜索引擎会抓取重定向后网页的内容而保留旧的网址，因为搜索引擎认为 重定向后的网址是暂时的。</p>
+<p> 400：客户端请求错误，多为参数不合法导致 Web 服务器验参失败。 </p>
+<p>404：未找到，Web 服务器找不到资源。 </p>
+<p>500：Web 服务器错误，服务器处理客户端请求的时候发生错误。 </p>
+<p>503：服务不可用，服务器停机。 504：网关超时。</p>
+<h4 id="HTTP和HTTPS"><a href="#HTTP和HTTPS" class="headerlink" title="HTTP和HTTPS"></a>HTTP和HTTPS</h4><p>端口不同：HTTP和 HTTPS 的连接方式不同没用的端口也不一样，HTTP是80， HTTPS 用的是443 消耗资源：和HTTP相比，HTTPS通信会因为加解密的处理消耗更多的CPU和内存资源。 开销： HTTPS 通信需要证书，这类证书通常需要向认证机构申请或者付费购买。</p>
+<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h4 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h4><p>进程是程序的⼀次执⾏过程，是系统运⾏程序的基本单位，因此进程是动态的。系统运⾏⼀个程序即 是⼀个进程从创建，运⾏到消亡的过程。</p>
+<p>线程是进程划分成的更⼩的运⾏单位。线程和进程最⼤的不同在于基本上各进程是独⽴的， ⽽各线程则不⼀定，因为同⼀进程中的线程极有可能会相互影响。线程执⾏开销⼩，但不利于资源的 管理和保护；⽽进程正相反</p>
+<h4 id="进程的状态转换"><a href="#进程的状态转换" class="headerlink" title="进程的状态转换"></a>进程的状态转换</h4><ol>
+<li>创建（New）：进程刚刚被创建，尚未被操作系统调度。</li>
+<li>就绪（Ready）：进程已经准备好运行，等待系统分配CPU时间片。</li>
+<li>运行（Running）：操作系统正在运行进程，该进程占用CPU资源。</li>
+<li>阻塞（Blocked）：因为某些原因，例如等待输入&#x2F;输出、等待信号量等，而被迫挂起的进程。</li>
+<li>终止（Terminated）：进程已经执行完毕或者因为某些原因被强制终止。</li>
+</ol>
+<h4 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a>并发与并行</h4><p>并发：两个及两个以上的作业在同⼀ 时间段 内执⾏。 </p>
+<p>并⾏：两个及两个以上的作业在同⼀ 时刻 执⾏。</p>
+<h4 id="进程间的通信方式有哪些？"><a href="#进程间的通信方式有哪些？" class="headerlink" title="进程间的通信方式有哪些？"></a>进程间的通信方式有哪些？</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411211355330.png" alt="image-20230411211355330"></p>
+<h4 id="进程调度算法"><a href="#进程调度算法" class="headerlink" title="进程调度算法"></a>进程调度算法</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411211417991.png" alt="image-20230411211417991"></p>
+<h4 id="死锁的四个条件"><a href="#死锁的四个条件" class="headerlink" title="死锁的四个条件"></a>死锁的四个条件</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411211726439.png" alt="image-20230411211726439"></p>
+<h4 id="解决死锁的方式"><a href="#解决死锁的方式" class="headerlink" title="解决死锁的方式"></a>解决死锁的方式</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411211801673.png" alt="image-20230411211801673"></p>
+<p><a target="_blank" rel="noopener" href="https://javaguide.cn/cs-basics/operating-system/operating-system-basic-questions-01.html#%E8%A7%A3%E5%86%B3%E6%AD%BB%E9%94%81%E7%9A%84%E6%96%B9%E6%B3%95">解决死锁的方式</a></p>
+<h4 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411212731614.png" alt="image-20230411212731614"></p>
+<h4 id="synchronized-和-ReentrantLock-的区别"><a href="#synchronized-和-ReentrantLock-的区别" class="headerlink" title="synchronized 和 ReentrantLock 的区别"></a>synchronized 和 ReentrantLock 的区别</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230327074732516.png" alt="image-20230327074732516"></p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230327074742655.png" alt="image-20230327074742655"></p>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230412213513365.png" alt="image-20230412213513365"></p>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230412213525510.png" alt="image-20230412213525510"></p>
+<h4 id="Redis持久化"><a href="#Redis持久化" class="headerlink" title="Redis持久化"></a>Redis持久化</h4><p>Redis 共有三种数据持久化的方式：</p>
+<ul>
+<li><strong>AOF 日志</strong>：每执行一条写操作命令，就把该命令以追加的方式写入到一个文件里；</li>
+<li><strong>RDB 快照</strong>：将某一时刻的内存数据，以二进制的方式写入磁盘；</li>
+<li><strong>混合持久化方式</strong>：Redis 4.0 新增的方式，集成了 AOF 和 RBD 的优点；</li>
+</ul>
+<h4 id="AOF是如何实现的"><a href="#AOF是如何实现的" class="headerlink" title="AOF是如何实现的"></a>AOF是如何实现的</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230410222001668.png" alt="image-20230410222001668"></p>
+<ul>
+<li>同步方式：<ul>
+<li>everysec： 每秒进行同步</li>
+<li>always：每当有新的命令，就写入aof中</li>
+<li>no：操作系统决定</li>
+</ul>
+</li>
+</ul>
+<h4 id="AOF的重写机制"><a href="#AOF的重写机制" class="headerlink" title="AOF的重写机制"></a>AOF的重写机制</h4><ul>
+<li>因为AOF会不断地追加命令写入文件，因此文件大小到达一定峰值的时候，会触发重写机制来压缩文件的大小。</li>
+<li>AOF文件重写不是对源文件进行重新整理，而是直接读取服务器现有的键值对，然后用一条命令去代替之前记录这个键值对的多条命令，生成一个新的文件后去替换原来的AOF文件。</li>
+<li><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240229183255376.png" alt="image-20240229183255376"></li>
+</ul>
+<h4 id="RDB-快照是如何实现的呢？"><a href="#RDB-快照是如何实现的呢？" class="headerlink" title="RDB 快照是如何实现的呢？"></a>RDB 快照是如何实现的呢？</h4><ul>
+<li><p>RDB 快照就是记录某一个瞬间的内存数据，记录的是实际数据，而 AOF 文件记录的是命令操作的日志，而不是实际的数据。因此在 Redis 恢复数据时， RDB 恢复数据的效率会比 AOF 高些，因为直接将 RDB 文件读入内存就可以，不需要像 AOF 那样还需要额外执行操作命令的步骤才能恢复数据。</p>
+</li>
+<li><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230410222749481.png" alt="image-20230410222749481"></p>
+</li>
+<li><p>Redis 的快照是<strong>全量快照</strong>，也就是说每次执行快照，都是把内存中的「所有数据」都记录到磁盘中。所以执行快照是一个比较重的操作，如果频率太频繁，可能会对 Redis 性能产生影响。如果频率太低，服务器故障时，丢失的数据会更多。</p>
+</li>
+</ul>
+<h4 id="为什么会有混合持久化？"><a href="#为什么会有混合持久化？" class="headerlink" title="为什么会有混合持久化？"></a>为什么会有混合持久化？</h4><ul>
+<li>RDB 优点是数据恢复速度快，但是快照的频率不好把握。频率太低，丢失的数据就会比较多，频率太高，就会影响性能。</li>
+<li>AOF 优点是丢失数据少，但是数据恢复不快。</li>
+<li>Redis 4.0 提出了<strong>混合使用 AOF 日志和内存快照</strong>，也叫混合持久化，既保证了 Redis 重启速度，又降低数据丢失风险。</li>
+</ul>
+<p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230410223413549.png" alt="image-20230410223413549"></p>
+<h3 id="Redis-集群"><a href="#Redis-集群" class="headerlink" title="Redis 集群"></a>Redis 集群</h3><h4 id="如何实现服务高可用"><a href="#如何实现服务高可用" class="headerlink" title="如何实现服务高可用"></a>如何实现服务高可用</h4><p>要想设计一个高可用的 Redis 服务，一定要从 Redis 的多服务节点来考虑，比如 Redis 的主从复制、哨兵模式、切片集群。</p>
+<h4 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230410223909699.png" alt="image-20230410223909699"></p>
+<h4 id="哨兵模式"><a href="#哨兵模式" class="headerlink" title="哨兵模式"></a>哨兵模式</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230410224513248.png" alt="image-20230410224513248"></p>
+<h4 id="切片集群模式"><a href="#切片集群模式" class="headerlink" title="切片集群模式"></a>切片集群模式</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230410233354041.png" alt="image-20230410233354041"></p>
+<h4 id="LRU算法（内存淘汰策略"><a href="#LRU算法（内存淘汰策略" class="headerlink" title="LRU算法（内存淘汰策略"></a>LRU算法（内存淘汰策略</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230412213312623.png" alt="image-20230412213312623"></p>
+<h4 id="LFU算法"><a href="#LFU算法" class="headerlink" title="LFU算法"></a>LFU算法</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230412213344924.png" alt="image-20230412213344924"></p>
+<h4 id="什么是缓存雪崩、击穿、穿透"><a href="#什么是缓存雪崩、击穿、穿透" class="headerlink" title="什么是缓存雪崩、击穿、穿透"></a>什么是缓存雪崩、击穿、穿透</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411000621697.png" alt="image-20230411000621697"></p>
+<h4 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411000906314.png" alt="image-20230411000906314"></p>
+<h4 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411001345939.png" alt="image-20230411001345939"></p>
+<h4 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411002446234.png" alt="image-20230411002446234"></p>
+<h4 id="雪崩、击穿、穿透应对方案"><a href="#雪崩、击穿、穿透应对方案" class="headerlink" title="雪崩、击穿、穿透应对方案"></a>雪崩、击穿、穿透应对方案</h4><p><img src="C:\Users\14739\AppData\Roaming\Typora\typora-user-images\image-20230411002522582.png" alt="image-20230411002522582"></p>
+<p>自动配置简单来说呢，就是将第三方的组件自动装载到IOC容器里面，不需要开发人员再去编写相关的配置，在SpringBoot应用里面呢只需要加上@SpringBootApplication注解就可以实现自动配置，SpringBootApplication它是一个复合注解，真正实现自动装配的注解是@EnableAutoConfiguration注解。自动装配的实现呢主要依靠三个核心的关键技术：<br>1）引入Starter，启动依赖组件的时候，这个组件里面必须包括@Configuration配置类，然后我需要通过Bean注解去声明需要装配到IOC容器里面的Bean对象<br>2）这个配置类是放在第三方的jar包里面，然后通过Spring Boot中约定大于配置的理念，去把配置类的全路径放在件META_INF&#x2F;Spring.factories文件里面，SpringBoot就可以知道第三方jar包里面配置类的位置，它主要是依靠Spring里面的SpringFactorierLoader来完成的<br>3）SpringBoot拿到所有第三方jar包声明的配置类之后，再通过ImportSelector这样一个接口来实现对这些配置类的动态加载，从而去完成自动装配这样的一个动作。<br>在我看来，SpringBoot是约定优于配置这一理念下的一个产物，所以在很多的地方都会看到这一类的思想，它的出现让开发人员可以更加聚焦在业务代码的编写上，而不需要去关系和业务无关的配置，其实自动装配的思想在springframework3.x版本里面的@enable注解，就已经有了实现的一个雏形，@enable注解时候一个模块驱动的意思，就是说我们只要增加@enable注解，就可以自动打开某个功能，而不需要针对这个功能去做Bean的配置，@enable注解的底层是帮我们自动完成这样的一个模块相关bean的注入</p>
+<h2 id="SpringBoot面试题"><a href="#SpringBoot面试题" class="headerlink" title="SpringBoot面试题"></a>SpringBoot面试题</h2><h3 id="Ioc"><a href="#Ioc" class="headerlink" title="Ioc"></a>Ioc</h3><h4 id="什么是IOC"><a href="#什么是IOC" class="headerlink" title="什么是IOC"></a>什么是IOC</h4><p><strong>IoC（Inversion of Control:控制反转）</strong> 是一种设计思想，而不是一个具体的技术实现。IoC 的思想就是将原本在程序中手动创建对象的控制权，交由 Spring 框架来管理。</p>
+<p><strong>为什么叫控制反转？</strong></p>
+<ul>
+<li><strong>控制</strong>：指的是对象创建（实例化、管理）的权力</li>
+<li><strong>反转</strong>：控制权交给外部环境（Spring 框架、IoC 容器）</li>
+</ul>
+<p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240302101045522.png" alt="image-20240302101045522"></p>
+<h4 id="IOC的工作流程"><a href="#IOC的工作流程" class="headerlink" title="IOC的工作流程"></a>IOC的工作流程</h4><p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240302105208123.png" alt="image-20240302105208123"></p>
+<p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240302105222027.png" alt="image-20240302105222027"></p>
+<h4 id="Spring中允许有两个id想同的bean吗？如果报错的话会发生在哪个阶段"><a href="#Spring中允许有两个id想同的bean吗？如果报错的话会发生在哪个阶段" class="headerlink" title="Spring中允许有两个id想同的bean吗？如果报错的话会发生在哪个阶段"></a>Spring中允许有两个id想同的bean吗？如果报错的话会发生在哪个阶段</h4><ul>
+<li>首先，一个xml里面是不能存在两个id相同的bean的，否则Spring容器启动的时候会报错，因为Spring会在启动的时候验证id的唯一性。这个错误会发生在Spring对xml文件进行解析转化为BeanDefinition阶段。</li>
+<li>如果是在两个不同的Spring配置文件中，可以存在两个id相同的bean，但是ioc容器在加载的时候，会对相同的id的bean进行覆盖。使用后面的。</li>
+<li>但是在Spring3.x版本后，如果使用@Configuration注解声明配置类，在ioc容器中只会注册第一个声明的bean的实例。</li>
+</ul>
+<h4 id="Component和-Bean的区别是什么"><a href="#Component和-Bean的区别是什么" class="headerlink" title="@Component和@Bean的区别是什么"></a>@Component和@Bean的区别是什么</h4><ul>
+<li><p><code>@Component</code> 注解作用于类，而<code>@Bean</code>注解作用于方法。</p>
+</li>
+<li><p><code>@Component</code>通常是通过类路径扫描来自动侦测以及自动装配到 Spring 容器中（我们可以使用 <code>@ComponentScan</code> 注解定义要扫描的路径从中找出标识了需要装配的类自动装配到 Spring 的 bean 容器中）。<code>@Bean</code> 注解通常是我们在标有该注解的方法中定义产生这个 bean,<code>@Bean</code>告诉了 Spring 这是某个类的实例，当我需要用它的时候还给我。</p>
+</li>
+<li><p><code>@Bean</code> 注解比 <code>@Component</code> 注解的自定义性更强，而且很多地方我们只能通过 <code>@Bean</code> 注解来注册 bean。比如当我们引用第三方库中的类需要装配到 <code>Spring</code>容器时，则只能通过 <code>@Bean</code>来实现。</p>
+</li>
+</ul>
+<h4 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h4><p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240302124253980.png" alt="image-20240302124253980"></p>
+<h4 id="Spring有哪些注入方式"><a href="#Spring有哪些注入方式" class="headerlink" title="Spring有哪些注入方式"></a>Spring有哪些注入方式</h4><h3 id="谈谈AOP"><a href="#谈谈AOP" class="headerlink" title="谈谈AOP"></a>谈谈AOP</h3><p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240302162110492.png" alt="image-20240302162110492"></p>
+<p> AOP 关键术语：</p>
+<ul>
+<li><strong>横切关注点（cross-cutting concerns）</strong> ：多个类或对象中的公共行为（如日志记录、事务管理、权限控制、接口限流、接口幂等等）。</li>
+<li><strong>切面（Aspect）</strong>：对横切关注点进行封装的类，一个切面是一个类。切面可以定义多个通知，用来实现具体的功能。</li>
+<li><strong>连接点（JoinPoint）</strong>：连接点是方法调用或者方法执行时的某个特定时刻（如方法调用、异常抛出等）。</li>
+<li><strong>通知（Advice）</strong>：通知就是切面在某个连接点要执行的操作。通知有五种类型，分别是前置通知（Before）、后置通知（After）、返回通知（AfterReturning）、异常通知（AfterThrowing）和环绕通知（Around）。前四种通知都是在目标方法的前后执行，而环绕通知可以控制目标方法的执行过程。</li>
+<li><strong>切点（Pointcut）</strong>：一个切点是一个表达式，它用来匹配哪些连接点需要被切面所增强。切点可以通过注解、正则表达式、逻辑运算等方式来定义。比如 <code>execution(* com.xyz.service..*(..))</code>匹配 <code>com.xyz.service</code> 包及其子包下的类或接口。</li>
+<li><strong>织入（Weaving）</strong>：织入是将切面和目标对象连接起来的过程，也就是将通知应用到切点匹配的连接点上。常见的织入时机有两种，分别是编译期织入（AspectJ）</li>
+</ul>
+<h4 id="aop的代理"><a href="#aop的代理" class="headerlink" title="aop的代理"></a>aop的代理</h4><ul>
+<li>如果要代理的对象实现了接口，就用JDK动态代理去创建对象</li>
+<li>如果没有实现接口的对象，就用CGlib去继承那个类，然后生成一个子类作为代理。</li>
+</ul>
+<h4 id="Spring事务"><a href="#Spring事务" class="headerlink" title="Spring事务"></a>Spring事务</h4><ul>
+<li>只要是以代理方式实现的声明式事务，无论是JDK动态代理，还是CGLIB直接写字节码生成代理，都只有<strong>public</strong>方法上的事务注解才起作用。而且必须在<strong>代理类外部调用才行</strong>，如果直接在目标类里面调用，事务照样不起作用。因为 Spring AOP 使用动态代理来实现事务的管理，它会在运行的时候为带有 <code>@Transactional</code> 注解的方法生成代理对象，并在方法调用的前后应用事物逻辑。如果该方法被其他类调用我们的代理对象就会拦截方法调用并处理事务。但是在一个类中的其他方法内部调用的时候，我们代理对象就无法拦截到这个内部调用，因此事务也就失效了。也就是说本类调用不走代理，但是开启事务的代码是织入代理类的，因此就失效了。</li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/JcHt99SAbNIlY063rmylpA">Spring事务失效与否</a></li>
+</ul>
+<h3 id="讲讲循环依赖"><a href="#讲讲循环依赖" class="headerlink" title="讲讲循环依赖"></a>讲讲循环依赖</h3><h4 id="1-什么是循环依赖"><a href="#1-什么是循环依赖" class="headerlink" title="1.什么是循环依赖"></a>1.什么是循环依赖</h4><h4 id="2-什么情况下循环依赖可以被处理"><a href="#2-什么情况下循环依赖可以被处理" class="headerlink" title="2.什么情况下循环依赖可以被处理"></a>2.什么情况下循环依赖可以被处理</h4><ul>
+<li>出现循环依赖的Bean必须是单例的</li>
+<li>依赖注入的方式不能全是构造器注入的方式</li>
+</ul>
+<p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240303134433877.png" alt="image-20240303134433877"></p>
+<h4 id="3-Spring是如何解决的循环依赖（结合Bean的生命周期思考）"><a href="#3-Spring是如何解决的循环依赖（结合Bean的生命周期思考）" class="headerlink" title="3.Spring是如何解决的循环依赖（结合Bean的生命周期思考）"></a>3.Spring是如何解决的循环依赖（结合Bean的生命周期思考）</h4><ul>
+<li>没有AOP的循环依赖</li>
+</ul>
+<p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240303161225650.png" alt="image-20240303161225650"></p>
+<p>在这里，三级缓存没有作用，就是返回一个<code>EarlyBeanReference</code></p>
+<ul>
+<li><p>有AOP的循环依赖</p>
+<ul>
+<li>如果在开启<code>AOP</code>的情况下，那么就是调用到<code>AnnotationAwareAspectJAutoProxyCreator</code>的<code>getEarlyBeanReference</code>方法，对应的源码如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Object <span class="title function_">getEarlyBeanReference</span><span class="params">(Object bean, String beanName)</span> &#123;</span><br><span class="line">    <span class="type">Object</span> <span class="variable">cacheKey</span> <span class="operator">=</span> getCacheKey(bean.getClass(), beanName);</span><br><span class="line">    <span class="built_in">this</span>.earlyProxyReferences.put(cacheKey, bean);</span><br><span class="line">    <span class="comment">// 如果需要代理，返回一个代理对象，不需要代理，直接返回当前传入的这个bean对象</span></span><br><span class="line">    <span class="keyword">return</span> wrapIfNecessary(bean, beanName, cacheKey);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>我们对A进行了<code>AOP</code>代理的话，那么此时<code>getEarlyBeanReference</code>将返回一个代理后的对象，而不是实例化阶段创建的对象，这样就意味着B中注入的A将是一个代理对象而不是A的实例化阶段创建后的对象。</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:/Users/14739/AppData/Roaming/Typora/typora-user-images/image-20240303162348332.png" alt="image-20240303162348332"></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/kS0K5P4FdF3v-fiIjGIvvQ">讲一讲Spring中的循环依赖</a></p>
+<h3 id="SpringBoot的自动装配原理"><a href="#SpringBoot的自动装配原理" class="headerlink" title="SpringBoot的自动装配原理"></a>SpringBoot的自动装配原理</h3><ul>
+<li>自动装配可以简单理解为：<strong>通过注解或者一些简单的配置就能在 Spring Boot 的帮助下实现某块功能。</strong></li>
+<li>SpringBoot 的核心注解 <code>SpringBootApplication</code>可以看做是<code>@Configuration</code>、<code>@EnableAutoConfiguration</code>、<code>@ComponentScan</code> 注解的集合。</li>
+<li>这三个注解的作用分别是：<ul>
+<li><code>@EnableAutoConfiguration</code>：启用 SpringBoot 的自动配置机制</li>
+<li><code>@Configuration</code>：允许在上下文中注册额外的 bean 或导入其他配置类</li>
+<li><code>@ComponentScan</code>：扫描被<code>@Component</code> (<code>@Service</code>,<code>@Controller</code>)注解的 bean，注解默认会扫描启动类所在的包下所有的类 ，可以自定义不扫描某些 bean。如下图所示，容器中将排除<code>TypeExcludeFilter</code>和<code>AutoConfigurationExcludeFilter</code>。</li>
+</ul>
+</li>
+<li><code>EnableAutoConfiguration</code> 只是一个简单地注解，自动装配核心功能的实现实际是通过 <code>AutoConfigurationImportSelector</code>类。</li>
+<li><code>AutoConfigurationImportSelector</code> 类实现了 <code>ImportSelector</code>接口，也就实现了这个接口中的 <code>selectImports</code>方法，该方法主要用于<strong>获取所有符合条件的类的全限定类名，这些类需要被加载到 IoC 容器中</strong>。给容器导入META-INF&#x2F;spring.factories 里定义的自动配置类。</li>
+<li>筛选有效的自动配置类。每一个自动配置类结合对应的 xxxProperties.java 读取配置文件进行自动配置功能</li>
+</ul>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2024/01/25/design-pattern/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+              2024-03-23 18:14:29
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E6%8A%84"><span class="toc-text">小抄</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%A7%92%E6%9D%80%E5%B9%B3%E5%8F%B0"><span class="toc-text">分布式秒杀平台</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E7%BC%93%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="toc-text">混合缓存模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E7%BC%93%E5%AD%98%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-text">混合缓存架构设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-text">缓存设计原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6"><span class="toc-text">缓存刷新机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-text">数据一致性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E5%8C%96%E4%B8%8B%E5%8D%95%E6%B5%81%E7%A8%8B"><span class="toc-text">异步化下单流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%87%BA%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1"><span class="toc-text">为什么会出现分布式事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RocketMQ%E5%A4%84%E7%90%86%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1"><span class="toc-text">RocketMQ处理分布式事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%98%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E5%BC%8F%E8%83%BD%E5%AE%9E%E7%8E%B0%E9%98%B2%E8%B6%85%E5%8D%96"><span class="toc-text">还有哪些方式能实现防超卖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%A1%AE%E4%BF%9D%E5%B9%82%E7%AD%89%E6%80%A7"><span class="toc-text">如何确保幂等性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%9D%E8%AF%81%E6%B6%88%E6%81%AF%E4%B8%8D%E4%B8%A2%E5%A4%B1"><span class="toc-text">保证消息不丢失</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E5%A4%84%E7%90%86%E6%B6%88%E6%81%AF%E5%A0%86%E7%A7%AF"><span class="toc-text">如果处理消息堆积</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#King-of-Bots"><span class="toc-text">King of Bots</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%A8%A1%E5%9D%97"><span class="toc-text">实现模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9B%BE%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">地图的创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%9B%87%E7%9A%84%E7%A7%BB%E5%8A%A8"><span class="toc-text">蛇的移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Springboot%E4%B8%AD%E7%9A%84%E5%B1%82"><span class="toc-text">Springboot中的层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E9%AA%8C%E8%AF%81"><span class="toc-text">用户验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringSecurity"><span class="toc-text">SpringSecurity</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90"><span class="toc-text">流程分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%BE%AE%E6%9C%8D%E5%8A%A1%EF%BC%89"><span class="toc-text">匹配系统（微服务）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Bot%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%EF%BC%88%E5%BE%AE%E6%9C%8D%E5%8A%A1%EF%BC%89"><span class="toc-text">Bot代码执行（微服务）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%81%E6%9D%BF%E6%A8%A1%E5%BC%8F"><span class="toc-text">老板模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%92%E8%A1%8C%E6%A6%9C"><span class="toc-text">排行榜</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E5%9F%BA%E7%A1%80"><span class="toc-text">Java基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="toc-text">面向对象三大特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD%E5%92%8C%E9%87%8D%E5%86%99"><span class="toc-text">重载和重写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%B9%E7%82%B9%EF%BC%9F%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E8%A2%ABoverride%EF%BC%9F"><span class="toc-text">构造方法有哪些特点？是否可以被override？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%81%9A%E4%BA%8B%E7%9A%84%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8"><span class="toc-text">不做事的无参构造方法有什么用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">创建对象的方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">抽象类和接口的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%8C%85%E8%A3%85%E7%B1%BB"><span class="toc-text">基本类型和包装类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A3%85%E7%AE%B1%E5%92%8C%E6%8B%86%E7%AE%B1"><span class="toc-text">装箱和拆箱</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#x3D-x3D-%E5%92%8Cequals%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">&#x3D;&#x3D; 和equals的区别（重点）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hashcode%E4%B8%8Eequals"><span class="toc-text">hashcode与equals()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99-equals-%E6%97%B6%E5%BF%85%E9%A1%BB%E9%87%8D%E5%86%99-hashCode-%E2%BD%85%E6%B3%95"><span class="toc-text">为什么重写 equals() 时必须重写 hashCode() ⽅法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">序列化和反序列化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84"><span class="toc-text">反射</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JVM%E3%80%81JRE%E5%92%8CJDK%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">JVM、JRE和JDK的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%97%E8%8A%82%E7%A0%81"><span class="toc-text">什么是字节码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#String%E3%80%81StringBuffer%E3%80%81StringBuilder"><span class="toc-text">String、StringBuffer、StringBuilder</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#try-catch-finally-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%EF%BC%9F"><span class="toc-text">try-catch-finally 如何使用？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HashMap-%E7%9A%84-size-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%98%AF-2-%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9%EF%BC%9F"><span class="toc-text">HashMap 的 size 为什么必须是 2 的整数次方？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HashMap-%E7%9A%84-get-%E6%96%B9%E6%B3%95%E8%83%BD%E5%90%A6%E5%88%A4%E6%96%AD%E6%9F%90%E4%B8%AA%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E5%9C%A8-map-%E4%B8%AD%EF%BC%9F"><span class="toc-text">HashMap 的 get 方法能否判断某个元素是否在 map 中？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ConcurrentHashMap"><span class="toc-text">ConcurrentHashMap</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java1-8"><span class="toc-text">java1.8</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#concurrenthashmap-put-%E5%92%8C-get%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">concurrenthashmap put 和 get操作流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM"><span class="toc-text">JVM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JVM%E7%9A%84%E4%B8%BB%E8%A6%81%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-text">JVM的主要组成部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA"><span class="toc-text">运行时数据区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A0%86%E7%A9%BA%E9%97%B4%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-text">堆空间的基本结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E5%92%8C%E5%9B%9E%E6%94%B6%E5%8E%9F%E5%88%99%EF%BC%9A"><span class="toc-text">内存分配和回收原则：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GC%E7%9A%84%E4%B8%A4%E5%A4%A7%E7%B1%BB%EF%BC%9A"><span class="toc-text">GC的两大类：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E4%BA%A1%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%A4%E6%96%AD%E6%96%B9%E6%B3%95"><span class="toc-text">死亡对象的判断方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93"><span class="toc-text">引用类型的总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E5%BA%9F%E5%BC%83%E5%B8%B8%E9%87%8F%E5%92%8C%E6%97%A0%E7%94%A8%E7%B1%BB"><span class="toc-text">判断废弃常量和无用类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="toc-text">垃圾收集算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="toc-text">垃圾收集器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-text">类加载器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B"><span class="toc-text">双亲委派模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B"><span class="toc-text">并发编程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9B%E7%A8%8B%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B"><span class="toc-text">什么是进程，什么是线程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">为什么要使用多线程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8C%E7%8A%B6%E6%80%81"><span class="toc-text">线程的生命周期和状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2"><span class="toc-text">上下文切换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%AD%BB%E9%94%81"><span class="toc-text">线程死锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sleep%E5%92%8Cwait%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">sleep和wait的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Volatile"><span class="toc-text">Volatile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81"><span class="toc-text">乐观锁和悲观锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#synchronized"><span class="toc-text">synchronized</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ReetrantLock"><span class="toc-text">ReetrantLock</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ThreadLocal"><span class="toc-text">ThreadLocal</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">线程池</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL"><span class="toc-text">MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F"><span class="toc-text">三大范式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#drop%E3%80%81delete%E3%80%81truncate%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">drop、delete、truncate的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E6%93%8E"><span class="toc-text">引擎</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MyISAM%E7%B4%A2%E5%BC%95%E4%B8%8EInnoDB%E7%B4%A2%E5%BC%95%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">MyISAM索引与InnoDB索引的区别？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A2%E5%BC%95"><span class="toc-text">什么是索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">索引应用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%9E%8B"><span class="toc-text">索引有哪几种类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">索引基本原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E5%8E%9F%E5%88%99%EF%BC%88%E9%87%8D%E4%B8%AD%E4%B9%8B%E9%87%8D%EF%BC%89"><span class="toc-text">创建索引的原则（重中之重）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%80%E5%B7%A6%E5%89%8D%E7%BC%80%E5%8E%9F%E5%88%99%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%80%E5%B7%A6%E5%8C%B9%E9%85%8D%E5%8E%9F%E5%88%99"><span class="toc-text">什么是最左前缀原则？什么是最左匹配原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8B-%E6%A0%91%E8%80%8C%E4%B8%8D%E6%98%AFB%E6%A0%91"><span class="toc-text">数据库为什么使用B+树而不是B树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%EF%BC%9F%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E4%B8%8E%E9%9D%9E%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95"><span class="toc-text">什么是聚簇索引？何时使用聚簇索引与非聚簇索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-text">索引的优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8B%E5%8A%A1"><span class="toc-text">什么是事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E5%9B%9B%E5%A4%A7%E7%89%B9%E6%80%A7%EF%BC%88ACID%EF%BC%89"><span class="toc-text">事务四大特性（ACID）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E4%BB%80%E4%B9%88%E6%8A%80%E6%9C%AF%E6%9D%A5%E4%BF%9D%E8%AF%81%E4%BA%8B%E5%8A%A1%E7%9A%84%E8%BF%99%E5%9B%9B%E4%B8%AA%E7%89%B9%E6%80%A7%E7%9A%84%E5%91%A2%EF%BC%9F"><span class="toc-text">通过什么技术来保证事务的这四个特性的呢？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">并发带来的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%84%8F%E8%AF%BB"><span class="toc-text">脏读</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E9%87%8D%E8%B4%9F%E8%AF%BB"><span class="toc-text">不可重负读</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B9%BB%E8%AF%BB"><span class="toc-text">幻读</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%EF%BC%9FMySQL%E7%9A%84%E9%BB%98%E8%AE%A4%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">什么是事务的隔离级别？MySQL的默认隔离级别是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MVCC%E6%98%AF%E6%80%8E%E6%A0%B7%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="toc-text">MVCC是怎样工作的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Read-View-%E5%9C%A8-MVCC-%E9%87%8C%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F"><span class="toc-text">Read View 在 MVCC 里如何工作的？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F"><span class="toc-text">可重复读是如何工作的？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E6%8F%90%E4%BA%A4%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F"><span class="toc-text">读提交是如何工作的？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%B9%BB%E8%AF%BB"><span class="toc-text">如何解决幻读</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%81"><span class="toc-text">锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E9%94%81"><span class="toc-text">全局锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E7%BA%A7%E9%94%81%EF%BC%88%E5%BE%85%E5%AE%8C%E5%96%84%EF%BC%8C%E5%B0%8F%E6%9E%97coding%EF%BC%89"><span class="toc-text">表级锁（待完善，小林coding）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E7%BA%A7%E9%94%81"><span class="toc-text">行级锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E9%94%81%E7%9A%84%E7%B1%BB%E5%88%AB%E4%B8%8AMySQL%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E9%94%81%E5%91%A2%EF%BC%9F%E5%83%8F%E4%B8%8A%E9%9D%A2%E8%BF%9B%E8%A1%8C%E9%94%81%E5%AE%9A%E6%9C%89%E7%82%B9%E9%98%BB%E7%A2%8D%E5%B9%B6%E5%8F%91%E6%95%88%E7%8E%87%EF%BC%9F"><span class="toc-text">从锁的类别上MySQL都有哪些锁呢？像上面进行锁定有点阻碍并发效率？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL%E4%B8%ADInnoDB%E5%BC%95%E6%93%8E%E7%9A%84%E8%A1%8C%E9%94%81%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="toc-text">MySQL中InnoDB引擎的行锁是怎么实现的？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#InnoDB%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E7%9A%84%E9%94%81%E7%9A%84%E7%AE%97%E6%B3%95%E6%9C%89%E4%B8%89%E7%A7%8D"><span class="toc-text">InnoDB存储引擎的锁的算法有三种</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="toc-text">数据库的乐观锁和悲观锁是什么？怎么实现的？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97"><span class="toc-text">日志</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undo-log%E3%80%81redo-log%E3%80%81binlog-%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%EF%BC%9F"><span class="toc-text">undo log、redo log、binlog 有什么用？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undo-log"><span class="toc-text">undo log</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#redo-log"><span class="toc-text">redo log</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#binlog"><span class="toc-text">binlog</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">主从复制的实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%BD%91"><span class="toc-text">计网</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%9F%E4%B8%A4%E6%AC%A1%E4%B8%8D%E8%A1%8C%EF%BC%9F"><span class="toc-text">为什么是三次握手？两次不行？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%EF%BC%9F%E4%B8%89%E6%AC%A1%E4%B8%8D%E8%A1%8C%EF%BC%9F"><span class="toc-text">四次挥手？三次不行？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">TCP和UDP的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-1-0%EF%BC%8CHTTP-1-1-%E5%92%8C-HTTP-2-0-%E6%98%AFHTTP%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%89%E4%B8%AA%E4%B8%BB%E8%A6%81%E7%89%88%E6%9C%AC%E3%80%82"><span class="toc-text">HTTP 1.0，HTTP 1.1 和 HTTP 2.0 是HTTP协议的三个主要版本。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-text">状态码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E5%92%8CHTTPS"><span class="toc-text">HTTP和HTTPS</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-text">操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B"><span class="toc-text">进程和线程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2"><span class="toc-text">进程的状态转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C"><span class="toc-text">并发与并行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">进程间的通信方式有哪些？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">进程调度算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E5%9B%9B%E4%B8%AA%E6%9D%A1%E4%BB%B6"><span class="toc-text">死锁的四个条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%AD%BB%E9%94%81%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">解决死锁的方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98"><span class="toc-text">虚拟内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#synchronized-%E5%92%8C-ReentrantLock-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">synchronized 和 ReentrantLock 的区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis"><span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">Redis持久化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AOF%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="toc-text">AOF是如何实现的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AOF%E7%9A%84%E9%87%8D%E5%86%99%E6%9C%BA%E5%88%B6"><span class="toc-text">AOF的重写机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RDB-%E5%BF%AB%E7%85%A7%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%91%A2%EF%BC%9F"><span class="toc-text">RDB 快照是如何实现的呢？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%9C%89%E6%B7%B7%E5%90%88%E6%8C%81%E4%B9%85%E5%8C%96%EF%BC%9F"><span class="toc-text">为什么会有混合持久化？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E9%9B%86%E7%BE%A4"><span class="toc-text">Redis 集群</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%9C%8D%E5%8A%A1%E9%AB%98%E5%8F%AF%E7%94%A8"><span class="toc-text">如何实现服务高可用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6"><span class="toc-text">主从复制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F"><span class="toc-text">哨兵模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%87%E7%89%87%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F"><span class="toc-text">切片集群模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LRU%E7%AE%97%E6%B3%95%EF%BC%88%E5%86%85%E5%AD%98%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5"><span class="toc-text">LRU算法（内存淘汰策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LFU%E7%AE%97%E6%B3%95"><span class="toc-text">LFU算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%E3%80%81%E5%87%BB%E7%A9%BF%E3%80%81%E7%A9%BF%E9%80%8F"><span class="toc-text">什么是缓存雪崩、击穿、穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9"><span class="toc-text">缓存雪崩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF"><span class="toc-text">缓存击穿</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F"><span class="toc-text">缓存穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%AA%E5%B4%A9%E3%80%81%E5%87%BB%E7%A9%BF%E3%80%81%E7%A9%BF%E9%80%8F%E5%BA%94%E5%AF%B9%E6%96%B9%E6%A1%88"><span class="toc-text">雪崩、击穿、穿透应对方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringBoot%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">SpringBoot面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ioc"><span class="toc-text">Ioc</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFIOC"><span class="toc-text">什么是IOC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IOC%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">IOC的工作流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E4%B8%AD%E5%85%81%E8%AE%B8%E6%9C%89%E4%B8%A4%E4%B8%AAid%E6%83%B3%E5%90%8C%E7%9A%84bean%E5%90%97%EF%BC%9F%E5%A6%82%E6%9E%9C%E6%8A%A5%E9%94%99%E7%9A%84%E8%AF%9D%E4%BC%9A%E5%8F%91%E7%94%9F%E5%9C%A8%E5%93%AA%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="toc-text">Spring中允许有两个id想同的bean吗？如果报错的话会发生在哪个阶段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Component%E5%92%8C-Bean%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">@Component和@Bean的区别是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">Bean的生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E6%9C%89%E5%93%AA%E4%BA%9B%E6%B3%A8%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="toc-text">Spring有哪些注入方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%88%E8%B0%88AOP"><span class="toc-text">谈谈AOP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#aop%E7%9A%84%E4%BB%A3%E7%90%86"><span class="toc-text">aop的代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E4%BA%8B%E5%8A%A1"><span class="toc-text">Spring事务</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%B2%E8%AE%B2%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96"><span class="toc-text">讲讲循环依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96"><span class="toc-text">1.什么是循环依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%A4%84%E7%90%86"><span class="toc-text">2.什么情况下循环依赖可以被处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Spring%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E7%9A%84%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%EF%BC%88%E7%BB%93%E5%90%88Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%80%9D%E8%80%83%EF%BC%89"><span class="toc-text">3.Spring是如何解决的循环依赖（结合Bean的生命周期思考）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringBoot%E7%9A%84%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86"><span class="toc-text">SpringBoot的自动装配原理</span></a></li></ol></li></ol></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          
+              <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+                <i class="iconfont icon-github"></i>
+              </a>
+              
+        </li>
+        
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2024 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' +  + '&url=' + http%3A%2F%2Fexample.com%2F2024%2F03%2F23%2F%25E5%2585%25AB%25E8%2582%25A1%25E6%2596%2587%25E6%25B1%2587%25E6%2580%25BB%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2024/03/23/%E5%85%AB%E8%82%A1%E6%96%87%E6%B1%87%E6%80%BB/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>
